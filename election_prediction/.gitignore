@@ -1,0 +1,98 @@
+# ============================================================
+# Secrets & local environment
+# ============================================================
+.env
+.env.*
+!.env.example
+!*.env.example
+.envrc
+.direnv/
+
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+.eggs/
+build/
+dist/
+wheels/
+MANIFEST
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+.ipynb_checkpoints/
+.python-version
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# ============================================================
+# Node / frontend artifacts
+# ============================================================
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.pnp
+.pnp.js
+.vite/
+coverage/
+*.tsbuildinfo
+
+# Frontend build outputs
+frontend/dist/
+*/frontend/dist/
+*/frontend/.vite/
+
+# ============================================================
+# Logs
+# ============================================================
+*.log
+*.pid
+*.seed
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ============================================================
+# ML training artifacts
+# ============================================================
+*/backend/checkpoints/
+*/train_run.log
+
+# ============================================================
+# Deployment / tooling caches
+# ============================================================
+.vercel/
+.railway/
+.codex
+
+# ============================================================
+# OS / editor junk
+# ============================================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+.vs/
+*.code-workspace

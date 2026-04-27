@@ -1,0 +1,414 @@
+/* Landing page theme — values copied 1:1 from
+   tamilnadu/frontend/src/index.css so the launcher feels identical to
+   the Tamil Nadu dashboard. Do NOT diverge from these tokens; they are
+   the same custom properties the TN app already uses. */
+
+:root {
+  --bg0: #f8f9fc;
+  --bg1: #edf0f5;
+  --ink: #1e2656;
+  --muted: #5d6790;
+
+  --section-heading-font:
+    "Poppins",
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+
+  --glass-bg: rgba(255, 255, 255, 0.22);
+  --glass-bg-strong: rgba(255, 255, 255, 0.32);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-border-subtle: rgba(184, 194, 230, 0.45);
+  --glass-blur: blur(20px) saturate(180%);
+  --glass-blur-strong: blur(28px) saturate(200%);
+  --glass-shadow:
+    0 8px 32px rgba(29, 42, 91, 0.18),
+    0 2px 8px rgba(29, 42, 91, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(29, 42, 91, 0.06);
+  --glass-shadow-elevated:
+    0 20px 48px rgba(29, 42, 91, 0.2),
+    0 4px 12px rgba(29, 42, 91, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(29, 42, 91, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Body — identical font stack and ink color to the Tamil Nadu dashboard. */
+body {
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(900px 500px at -5% -5%, rgba(255, 255, 255, 0.78) 0%, transparent 62%),
+    radial-gradient(1000px 550px at 105% -10%, rgba(255, 255, 255, 0.6) 0%, transparent 60%),
+    linear-gradient(160deg, var(--bg0), var(--bg1));
+  min-height: 100vh;
+}
+
+.app-shell {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.bg-blur {
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(100px);
+  opacity: 0.32;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bg-blur-a {
+  left: -8rem;
+  top: -6rem;
+  width: 30rem;
+  height: 30rem;
+  background: #d9dee8;
+}
+
+.bg-blur-b {
+  right: -9rem;
+  top: 8rem;
+  width: 28rem;
+  height: 28rem;
+  background: #e2e6ee;
+}
+
+.container {
+  width: min(1240px, 96vw);
+  margin: 0 auto;
+  padding: 3rem 0 2.5rem;
+  display: grid;
+  gap: 2.2rem;
+  min-height: 100vh;
+  align-content: center;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* ---- HERO — exact TN dashboard styling --------------------------------- */
+
+.hero {
+  padding: 1.1rem 0.2rem 0.45rem;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  text-align: center;
+}
+
+.hero-inner {
+  text-align: center;
+}
+
+.brand-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28rem;
+  position: relative;
+}
+
+.q-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-top: 4px;
+  animation: logoZoom 3.2s ease-in-out 1 both;
+  will-change: transform;
+}
+
+@keyframes logoZoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.brand-title {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  line-height: 1;
+  color: #1b2568;
+  letter-spacing: 0.01em;
+  font-weight: 800;
+}
+
+.hero-tagline {
+  margin: 0.78rem auto 0;
+  width: min(760px, 96%);
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1vw + 0.45rem, 1.1rem);
+  line-height: 1.45;
+}
+
+.hero-tagline .accent {
+  color: #1b2568;
+  font-weight: 700;
+}
+
+/* ---- STATE CARDS ------------------------------------------------------- */
+
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+  width: 100%;
+  margin: 0.5rem auto 0;
+}
+
+.state-card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 1.4rem;
+  padding: 0;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.34),
+    rgba(246, 248, 251, 0.16)
+  );
+  backdrop-filter: var(--glass-blur-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
+  box-shadow: var(--glass-shadow-elevated);
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 360ms ease;
+  animation: cardRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.state-card:nth-child(1) {
+  animation-delay: 0.25s;
+}
+
+.state-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.state-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 360ms ease;
+  background: radial-gradient(
+    circle at 30% 0%,
+    rgba(91, 141, 239, 0.18),
+    transparent 65%
+  );
+}
+
+.state-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -60% -20%;
+  height: 220px;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.16),
+    transparent 65%
+  );
+  opacity: 0.7;
+  transition: opacity 360ms ease;
+}
+
+.state-card:hover,
+.state-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgba(91, 141, 239, 0.45);
+  box-shadow:
+    0 28px 60px rgba(29, 42, 91, 0.24),
+    0 6px 16px rgba(91, 141, 239, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  outline: none;
+}
+
+.state-card:hover::before,
+.state-card:focus-visible::before {
+  opacity: 1;
+}
+
+.state-card-inner {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.85rem 1.85rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.state-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.state-flag .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  display: inline-block;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.dot-dmk {
+  background: linear-gradient(135deg, #ef4444, #fb7185);
+}
+.dot-aiadmk {
+  background: linear-gradient(135deg, #16a34a, #4ade80);
+}
+.dot-tvk {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+.dot-ldf {
+  background: linear-gradient(135deg, #ef4444, #fb7185);
+}
+.dot-udf {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+}
+.dot-nda {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+.dot-others {
+  background: linear-gradient(135deg, #94a3b8, #cbd5e1);
+}
+
+/* ---- STATE NAME / META / DESC — TN ink palette ------------------------- */
+
+.state-name {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(1.5rem, 1.6vw + 0.5rem, 2rem);
+  font-weight: 700;
+  color: #1b2568;
+  letter-spacing: 0.01em;
+}
+
+.state-meta {
+  margin: 0;
+  font-family: var(--section-heading-font);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  font-variant-caps: all-small-caps;
+  font-feature-settings: "smcp" 1, "c2sc" 1;
+}
+
+.state-desc {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* ---- CTA BUTTON — exact TN active-tab styling -------------------------- */
+
+.state-cta {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.78rem 1.3rem;
+  border-radius: 999px;
+  font-family: var(--section-heading-font);
+  font-weight: 600;
+  font-size: 0.96rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  font-variant-caps: all-small-caps;
+  font-feature-settings: "smcp" 1, "c2sc" 1;
+  color: #ffffff;
+  background: linear-gradient(135deg, #5b8def, #8b5cf6);
+  border: 1px solid transparent;
+  box-shadow: 0 4px 18px rgba(91, 141, 239, 0.35);
+  transition: background 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
+  width: fit-content;
+}
+
+.state-card:hover .state-cta,
+.state-card:focus-visible .state-cta {
+  background: linear-gradient(135deg, #4d7eea, #7c4ef0);
+  box-shadow: 0 6px 22px rgba(91, 141, 239, 0.42);
+  transform: translateX(4px);
+}
+
+.cta-arrow {
+  transition: transform 0.25s ease;
+}
+
+.state-card:hover .cta-arrow,
+.state-card:focus-visible .cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ---- ANIMATIONS -------------------------------------------------------- */
+
+@keyframes cardRise {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---- RESPONSIVE -------------------------------------------------------- */
+
+@media (max-width: 820px) {
+  .container {
+    padding: 2rem 0;
+    gap: 1.6rem;
+  }
+
+  .state-grid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .state-card-inner {
+    padding: 1.6rem 1.4rem 1.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .q-logo,
+  .state-card {
+    animation: none !important;
+  }
+
+  .state-card {
+    transition: none !important;
+  }
+}
