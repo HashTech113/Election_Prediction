@@ -618,9 +618,15 @@ def build_lens_summary(lens: str) -> dict[str, Any]:
     projected_winner = (
         max(seat_counts, key=seat_counts.get) if total > 0 else "N/A"
     )
-    average_score = (
-        round(sum(score_values) / len(score_values), 4) if score_values else None
-    )
+    if score_values:
+        average_score = round(sum(score_values) / len(score_values), 4)
+    elif projected_winner in PARTIES and len(raw_rows) > 0:
+        # Historical lens: no continuous score column. Surface the
+        # "dominance rate" — share of ACs the projected winner actually
+        # carried. Derived from real per-AC winners, no fabrication.
+        average_score = round(seat_counts[projected_winner] / len(raw_rows), 4)
+    else:
+        average_score = None
 
     return {
         "lens": lens,
