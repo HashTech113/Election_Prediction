@@ -34,6 +34,49 @@ API_VERSION = "2026-04-12.1"
 SCENARIO_KEYS = ("base_model", "votevibe")
 PREDICTION_LEVELS = ("long_term_trend", "recent_swing", "live_intelligence_score")
 
+# ---- Per-lens summary endpoint -------------------------------------------
+# Each lens reads its own pre-built CSV (produced by build_historical_trend_swing.py
+# and generate_scores.py). The dashboard's AnalysisHero uses these to surface
+# real per-lens variation (different seat counts per tab) without recomputing
+# anything on the fly.
+LENS_NAMES = (
+    "historical_projection",
+    "long_term_trend",
+    "recent_swing",
+    "final_prediction",
+)
+
+LENS_SOURCES: dict[str, dict] = {
+    "historical_projection": {
+        "file": "kerala_actual_historical_trend_swing_constituencies.csv",
+        "winner_col": "2016 Assembly Actual Winner",
+        "score_col": None,  # historical lens has no continuous score column
+        "data_reference": "2011 – 2026",
+        "label": "Historical Projection",
+    },
+    "long_term_trend": {
+        "file": "kerala_2026_long_term_trend_sheet.csv",
+        "winner_col": "analysis_predicted",
+        "score_col": "long_term_trend_score",
+        "data_reference": "2014 – 2026",
+        "label": "Long-Term Trend",
+    },
+    "recent_swing": {
+        "file": "kerala_2026_recent_swing_sheet.csv",
+        "winner_col": "analysis_predicted",
+        "score_col": "recent_swing_score",
+        "data_reference": "2024 – 2026",
+        "label": "Recent Swing",
+    },
+    "final_prediction": {
+        "file": "kerala_2026_final_prediction_score.csv",
+        "winner_col": "final_predicted",
+        "score_col": "final_prediction_score",
+        "data_reference": "Live Data",
+        "label": "Live Intelligence Score",
+    },
+}
+
 SCENARIO_LABELS: dict[str, str] = {
     "base_model": "Base Model",
     "votevibe": "VoteVibe Scenario",
@@ -455,3 +498,141 @@ def list_scenarios() -> list[dict[str, str]]:
         {"key": key, "label": SCENARIO_LABELS[key], "notes": SCENARIO_NOTES[key]}
         for key in SCENARIO_KEYS
     ]
+
+
+# --- Per-lens summary ------------------------------------------------------
+
+def _load_district_map() -> dict[str, str]:
+    """constituency → district from the master spine. Lens CSVs that lack
+    a district column are joined to this so the table can still group by district."""
+    path = DATA_CSV_DIR / "kerala_constituency_master_2026.csv"
+    if not path.exists():
+        return {}
+    with path.open(newline="") as f:
+        return {row["ac_name"]: row["district"] for row in csv.DictReader(f)}
+
+
+def _to_pct(raw: str | None) -> float:
+    """Parse 'ldf_score'/'_pct' values that may be 0–1 or 0–100."""
+    if raw is None or raw == "":
+        return 0.0
+    try:
+        v = float(raw)
+    except ValueError:
+        return 0.0
+    return v / 100.0 if v > 1.0 else v
+
+
+def build_lens_summary(lens: str) -> dict[str, Any]:
+    """Aggregate seat counts + per-row predictions from a per-lens CSV.
+
+    The lens CSVs are pre-built artefacts (see build_historical_trend_swing.py
+    and generate_scores.py). Each one carries an opinion of who wins each
+    constituency under that specific lens — so aggregating the winner column
+    yields a per-lens seat distribution that can differ markedly from the
+    live VoteVibe scenario.
+
+    Aggregation rule: count of constituencies whose winner column matches each
+    party. NEVER sum probabilities, average raw scores, or invent values.
+
+    Returns a payload that includes BOTH the summary (for the KPI tile) and
+    `rows` shaped like /api/predictions PredictionRow so the dashboard's
+    constituency table and seat-distribution bar list can swap per tab too.
+    """
+    if lens not in LENS_SOURCES:
+        raise ValueError(
+            f"Unknown lens {lens!r}. Expected one of {list(LENS_SOURCES)}."
+        )
+    spec = LENS_SOURCES[lens]
+    path = DATA_CSV_DIR / spec["file"]
+    if not path.exists():
+        raise FileNotFoundError(f"Lens source file not found: {path}")
+
+    with path.open(newline="") as f:
+        raw_rows = list(csv.DictReader(f))
+
+    if not raw_rows:
+        raise ValueError(f"Lens source file is empty: {path}")
+
+    winner_col = spec["winner_col"]
+    score_col = spec.get("score_col")
+    district_map = _load_district_map()
+
+    seat_counts = {p: 0 for p in PARTIES}
+    score_values: list[float] = []
+    rejected_winners: list[str] = []
+    out_rows: list[dict[str, Any]] = []
+
+    for row in raw_rows:
+        raw_winner = (row.get(winner_col) or "").strip()
+        winner_upper = raw_winner.upper()
+        # OTHERS / "Not available" / blank → predicted = "OTHERS" so the row
+        # is still rendered but doesn't pollute the seat count for a real party.
+        if winner_upper in seat_counts:
+            seat_counts[winner_upper] += 1
+            predicted = winner_upper
+        else:
+            rejected_winners.append(raw_winner)
+            predicted = "OTHERS"
+
+        score_val = 0.0
+        if score_col:
+            try:
+                score_val = float(row[score_col])
+            except (KeyError, TypeError, ValueError):
+                score_val = 0.0
+            score_values.append(score_val)
+
+        # Per-party shares — present in score sheets, absent in the historical CSV.
+        ldf = _to_pct(row.get("ldf_score"))
+        udf = _to_pct(row.get("udf_score"))
+        nda = _to_pct(row.get("nda_score"))
+        others = _to_pct(row.get("others_score"))
+        # Historical CSV: derive a 1-hot share from the actual winner so the
+        # bar visualisation still has signal.
+        if (ldf + udf + nda + others) == 0.0 and predicted in PARTIES:
+            shares = {p: 0.0 for p in PARTIES}
+            shares[predicted] = 1.0
+            ldf, udf, nda, others = shares["LDF"], shares["UDF"], shares["NDA"], shares["OTHERS"]
+
+        constituency = row.get("constituency") or row.get("ac_name") or ""
+        district = (
+            row.get("district")
+            or district_map.get(constituency, "")
+        )
+
+        out_rows.append(
+            {
+                "constituency": constituency,
+                "district": district,
+                "predicted": predicted,
+                "confidence": round(score_val, 4) if score_col else (1.0 if predicted in PARTIES else 0.0),
+                "LDF": round(ldf, 4),
+                "UDF": round(udf, 4),
+                "NDA": round(nda, 4),
+                "OTHERS": round(others, 4),
+            }
+        )
+
+    total = sum(seat_counts.values())
+    projected_winner = (
+        max(seat_counts, key=seat_counts.get) if total > 0 else "N/A"
+    )
+    average_score = (
+        round(sum(score_values) / len(score_values), 4) if score_values else None
+    )
+
+    return {
+        "lens": lens,
+        "label": spec["label"],
+        "total_constituencies": len(raw_rows),
+        "valid_winner_rows": total,
+        "seat_counts": seat_counts,
+        "projected_winner": projected_winner,
+        "average_score": average_score,
+        "data_reference": spec["data_reference"],
+        "source_file": spec["file"],
+        "rejected_winner_rows": len(rejected_winners),
+        "rejected_winner_sample": list({rw for rw in rejected_winners[:5]}),
+        "rows": out_rows,
+    }

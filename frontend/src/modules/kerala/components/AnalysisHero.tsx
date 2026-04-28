@@ -1,64 +1,48 @@
-import { useMemo, useState } from "react";
-import {
-  PROJECTION_SUMMARIES,
-  ProjectionSummary,
-  ProjectionTab,
-} from "../types/prediction";
+import { useMemo } from "react";
+import { LensName, LensSummary } from "../types/prediction";
 import { asPercent } from "../utils/format";
 
-type TabId = "historical" | "long_term" | "recent_swing" | "live_score";
-
-interface AnalysisHeroProps {
-  /** Live override for the "Live Intelligence Score" tab. When provided,
-   *  it replaces the hardcoded fixture so the KPI reflects current API data. */
-  liveOverride?: ProjectionSummary;
-}
-
-const TABS: Array<{ id: TabId; label: string }> = [
-  {
-    id: "historical",
-    label: "HISTORICAL PROJECTION",
-  },
-  { id: "long_term", label: "LONG-TERM TREND" },
-  { id: "recent_swing", label: "RECENT SWING" },
-  {
-    id: "live_score",
-    label: "LIVE INTELLIGENCE SCORE",
-  },
+const TABS: Array<{ label: string; lens: LensName }> = [
+  { label: "HISTORICAL PROJECTION",  lens: "historical_projection" },
+  { label: "LONG-TERM TREND",         lens: "long_term_trend" },
+  { label: "RECENT SWING",            lens: "recent_swing" },
+  { label: "LIVE INTELLIGENCE SCORE", lens: "final_prediction" },
 ];
 
-const TAB_TO_PROJECTION: Record<TabId, ProjectionTab> = {
-  historical: "historical_projection",
-  long_term: "long_term_trend",
-  recent_swing: "recent_swing",
-  live_score: "live_intelligence_score",
-};
+interface AnalysisHeroProps {
+  activeLens: LensName;
+  onLensChange: (lens: LensName) => void;
+  summaries: Partial<Record<LensName, LensSummary>>;
+}
 
-export function AnalysisHero({ liveOverride }: AnalysisHeroProps = {}) {
-  const [activeTab, setActiveTab] = useState<TabId>("historical");
-  const activeProjection = TAB_TO_PROJECTION[activeTab];
-  const summary =
-    activeProjection === "live_intelligence_score" && liveOverride
-      ? liveOverride
-      : PROJECTION_SUMMARIES[activeProjection];
+const PLACEHOLDER_NUM = "—";
+
+export function AnalysisHero({ activeLens, onLensChange, summaries }: AnalysisHeroProps) {
+  const summary = summaries[activeLens];
 
   const kpi = useMemo(
     () => [
       {
         label: "TOTAL CONSTITUENCIES",
-        value: String(summary.totalConstituencies),
+        value: summary ? String(summary.total_constituencies) : PLACEHOLDER_NUM,
       },
-      { label: "DATA REFERENCE", value: summary.dataReference },
-      { label: "PROJECTED WINNER", value: summary.projectedWinner },
+      {
+        label: "DATA REFERENCE",
+        value: summary?.data_reference ?? PLACEHOLDER_NUM,
+      },
+      {
+        label: "PROJECTED WINNER",
+        value: summary?.projected_winner ?? PLACEHOLDER_NUM,
+      },
       {
         label: "AVERAGE WINNING SCORE",
         value:
-          summary.averageWinningScore === null
-            ? "—"
-            : asPercent(summary.averageWinningScore),
+          !summary || summary.average_score === null
+            ? PLACEHOLDER_NUM
+            : asPercent(summary.average_score),
       },
     ],
-    [summary]
+    [summary],
   );
 
   return (
@@ -85,11 +69,11 @@ export function AnalysisHero({ liveOverride }: AnalysisHeroProps = {}) {
       <nav className="ep-tabs" aria-label="Prediction analysis tabs">
         {TABS.map((tab) => (
           <button
-            key={tab.id}
-            className={`ep-tab ${activeTab === tab.id ? "active" : ""}`}
-            onClick={() => setActiveTab(tab.id)}
+            key={tab.lens}
+            className={`ep-tab ${activeLens === tab.lens ? "active" : ""}`}
+            onClick={() => onLensChange(tab.lens)}
             type="button"
-            aria-pressed={activeTab === tab.id}
+            aria-pressed={activeLens === tab.lens}
           >
             {tab.label}
           </button>

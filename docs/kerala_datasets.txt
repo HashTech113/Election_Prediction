@@ -1,0 +1,510 @@
+KERALA DATASETS
+Generated: 2026-04-28T15:32:37+05:30
+Source: backend/kerala
+
+TOTAL DATASET FILES: 32
+TOTAL ROWS ACROSS CSV FILES: 1551
+
+================ CONSTITUENCY EXPLORER SEAT SUMMARY (2026) ================
+Source file: backend/kerala/data/csv/predictions_2026.csv
+Total constituencies (seats): 140
+
+- LDF: 69 seats (49.29%)
+- UDF: 60 seats (42.86%)
+- NDA: 7 seats (5.00%)
+- OTHERS: 4 seats (2.86%)
+
+================ YEAR COVERAGE ================
+- 2011
+- 2014
+- 2016
+- 2019
+- 2021
+- 2024
+- 2025
+- 2026
+- Not specified
+
+================ YEAR-WISE DATASET MAP ================
+
+[2011]
+- backend/kerala/data/csv/kerala_actual_historical_trend_swing_constituencies.csv
+
+[2014]
+- backend/kerala/data/csv/kerala_actual_historical_trend_swing_constituencies.csv
+- backend/kerala/data/csv/kerala_lok_sabha_election_2014.csv
+
+[2016]
+- backend/kerala/data/csv/kerala_actual_historical_trend_swing_constituencies.csv
+- backend/kerala/data/csv/kerala_assembly_2026.csv
+- backend/kerala/data/csv/kerala_assembly_election_2016.csv
+
+[2019]
+- backend/kerala/data/csv/kerala_lok_sabha_election_2019.csv
+
+[2021]
+- backend/kerala/data/csv/kerala_actual_historical_trend_swing_constituencies.csv
+- backend/kerala/data/csv/kerala_assembly_2026.csv
+- backend/kerala/data/csv/kerala_assembly_election_2021.csv
+
+[2024]
+- backend/kerala/data/csv/kerala_actual_historical_trend_swing_constituencies.csv
+- backend/kerala/data/csv/kerala_assembly_2026.csv
+- backend/kerala/data/csv/kerala_lok_sabha_election_2024.csv
+
+[2025]
+- backend/kerala/data/csv/kerala_assembly_2026.csv
+
+[2026]
+- backend/kerala/data/csv/kerala_2026_final_prediction_score.csv
+- backend/kerala/data/csv/kerala_2026_live_intelligence_score_sheet.csv
+- backend/kerala/data/csv/kerala_2026_long_term_trend_sheet.csv
+- backend/kerala/data/csv/kerala_2026_projected_party_summary.csv
+- backend/kerala/data/csv/kerala_2026_recent_swing_sheet.csv
+- backend/kerala/data/csv/kerala_LDF_alliance_seat_sharing_2026.csv
+- backend/kerala/data/csv/kerala_NDA_seat_sharing_2026.csv
+- backend/kerala/data/csv/kerala_UDF_alliance_seat_sharing_2026.csv
+- backend/kerala/data/csv/kerala_assembly_2026.csv
+- backend/kerala/data/csv/kerala_constituency_master_2026.csv
+- backend/kerala/data/csv/kerala_electorate_total_2026.csv
+- backend/kerala/data/csv/kerala_first_time_voters_2026.csv
+- backend/kerala/data/csv/kerala_gender_wise_voters_2026.csv
+- backend/kerala/data/csv/kerala_main_parties_2026.csv
+- backend/kerala/data/csv/kerala_nominations_and_candidates_2026.csv
+- backend/kerala/data/csv/kerala_party_wise_seat_table_2026.csv
+- backend/kerala/data/csv/kerala_people_yet_to_vote_2026.csv
+- backend/kerala/data/csv/kerala_prediction_scenarios_2026.csv
+- backend/kerala/data/csv/kerala_sentiment_analysis_2026.csv
+- backend/kerala/data/csv/predictions_2026.csv
+- backend/kerala/data/csv/predictions_scenarios_2026.csv
+
+[Not specified]
+- backend/kerala/data/csv/kerala_demographics.csv
+- backend/kerala/data/csv/kerala_district_list.csv
+- backend/kerala/data/csv/kerala_election_comparison_table.csv
+- backend/kerala/data/csv/kerala_elections_results_past_10_years.csv
+- backend/kerala/data/csv/kerala_past_election_projection_summary.csv
+
+================ DETAILED DATASET SCHEMA ================
+
+FILE: backend/kerala/data/csv/kerala_2026_final_prediction_score.csv
+YEARS: 2026
+ROWS: 140
+COLUMNS: 7
+COLUMN NAMES:
+1. constituency
+2. long_term_trend_score
+3. recent_swing_score
+4. live_intelligence_score
+5. final_prediction_score
+6. final_predicted
+7. last_updated
+
+FILE: backend/kerala/data/csv/kerala_2026_live_intelligence_score_sheet.csv
+YEARS: 2026
+ROWS: 140
+COLUMNS: 8
+COLUMN NAMES:
+1. constituency
+2. ldf_score
+3. udf_score
+4. nda_score
+5. others_score
+6. live_intelligence_score
+7. analysis_predicted
+8. last_updated
+
+FILE: backend/kerala/data/csv/kerala_2026_long_term_trend_sheet.csv
+YEARS: 2026
+ROWS: 140
+COLUMNS: 7
+COLUMN NAMES:
+1. constituency
+2. ldf_score
+3. udf_score
+4. nda_score
+5. others_score
+6. long_term_trend_score
+7. analysis_predicted
+
+FILE: backend/kerala/data/csv/kerala_2026_projected_party_summary.csv
+YEARS: 2026
+ROWS: 4
+COLUMNS: 4
+COLUMN NAMES:
+1. party
+2. projected_seats
+3. average_projected_vote_share_pct
+4. note
+
+FILE: backend/kerala/data/csv/kerala_2026_recent_swing_sheet.csv
+YEARS: 2026
+ROWS: 140
+COLUMNS: 7
+COLUMN NAMES:
+1. constituency
+2. ldf_score
+3. udf_score
+4. nda_score
+5. others_score
+6. recent_swing_score
+7. analysis_predicted
+
+FILE: backend/kerala/data/csv/kerala_LDF_alliance_seat_sharing_2026.csv
+YEARS: 2026
+ROWS: 11
+COLUMNS: 4
+COLUMN NAMES:
+1. front
+2. party
+3. seats
+4. status
+
+FILE: backend/kerala/data/csv/kerala_NDA_seat_sharing_2026.csv
+YEARS: 2026
+ROWS: 4
+COLUMNS: 4
+COLUMN NAMES:
+1. front
+2. party
+3. seats
+4. status
+
+FILE: backend/kerala/data/csv/kerala_UDF_alliance_seat_sharing_2026.csv
+YEARS: 2026
+ROWS: 8
+COLUMNS: 4
+COLUMN NAMES:
+1. front
+2. party
+3. seats
+4. status
+
+FILE: backend/kerala/data/csv/kerala_actual_historical_trend_swing_constituencies.csv
+YEARS: 2011,2014,2016,2021,2024
+ROWS: 140
+COLUMNS: 17
+COLUMN NAMES:
+1. ac_no
+2. constituency
+3. district
+4. region_5way
+5. reservation
+6. 2011 Assembly Actual Winner
+7. 2014 Lok Sabha AC/Segment Actual Winner
+8. Historical Projection [2011-2014]
+9. 2016 Assembly Actual Winner
+10. 2021 Assembly Actual Winner
+11. Long-Term Trend [2014-2021]
+12. 2021 Assembly Actual Winner For Swing
+13. 2024 Lok Sabha Actual Winner
+14. 2024 UDF Vote Share (%)
+15. 2024 LDF Vote Share (%)
+16. 2024 NDA Vote Share (%)
+17. Recent Swing [2021-2024]
+
+FILE: backend/kerala/data/csv/kerala_assembly_2026.csv
+YEARS: 2016,2021,2024,2025,2026
+ROWS: 140
+COLUMNS: 32
+COLUMN NAMES:
+1. constituency
+2. district
+3. region_5way
+4. is_reserved
+5. winner_2016
+6. winner_2021
+7. runner_up_2021
+8. winner_name_2021
+9. margin_pct_2021
+10. vote_share_2021
+11. ls2024_winner
+12. ls2024_udf_pct
+13. ls2024_ldf_pct
+14. ls2024_nda_pct
+15. lb2025_udf
+16. lb2025_ldf
+17. lb2025_nda
+18. proj_2026_ldf_pct
+19. proj_2026_udf_pct
+20. proj_2026_nda_pct
+21. proj_2026_others_pct
+22. proj_2026_winner
+23. proj_2026_margin_pct
+24. fin_crisis_impact
+25. wildlife_conflict_impact
+26. turnout_pct
+27. population_density
+28. literacy_rate
+29. urban_pct
+30. hindu_pct
+31. muslim_pct
+32. christian_pct
+
+FILE: backend/kerala/data/csv/kerala_assembly_election_2016.csv
+YEARS: 2016
+ROWS: 4
+COLUMNS: 4
+COLUMN NAMES:
+1. party
+2. seats_won
+3. votes
+4. vote_share
+
+FILE: backend/kerala/data/csv/kerala_assembly_election_2021.csv
+YEARS: 2021
+ROWS: 4
+COLUMNS: 4
+COLUMN NAMES:
+1. party
+2. seats_won
+3. votes
+4. vote_share
+
+FILE: backend/kerala/data/csv/kerala_constituency_master_2026.csv
+YEARS: 2026
+ROWS: 140
+COLUMNS: 7
+COLUMN NAMES:
+1. ac_no
+2. ac_name
+3. reservation
+4. district
+5. region_5way
+6. is_reserved
+7. election_cycle
+
+FILE: backend/kerala/data/csv/kerala_demographics.csv
+YEARS: Not specified
+ROWS: 14
+COLUMNS: 11
+COLUMN NAMES:
+1. district
+2. population
+3. density
+4. literacy
+5. urban_pct
+6. hindu_pct
+7. muslim_pct
+8. christian_pct
+9. sc_st_pct
+10. youth_pct
+11. women_pct
+
+FILE: backend/kerala/data/csv/kerala_district_list.csv
+YEARS: Not specified
+ROWS: 14
+COLUMNS: 3
+COLUMN NAMES:
+1. District
+2. Headquarters
+3. Established
+
+FILE: backend/kerala/data/csv/kerala_election_comparison_table.csv
+YEARS: Not specified
+ROWS: 5
+COLUMNS: 8
+COLUMN NAMES:
+1. year
+2. election
+3. winner
+4. winner_seats
+5. winner_vote_share
+6. runner_up
+7. runner_up_seats
+8. runner_up_vote_share
+
+FILE: backend/kerala/data/csv/kerala_elections_results_past_10_years.csv
+YEARS: Not specified
+ROWS: 4
+COLUMNS: 4
+COLUMN NAMES:
+1. year
+2. election_type
+3. total_seats
+4. winner
+
+FILE: backend/kerala/data/csv/kerala_electorate_total_2026.csv
+YEARS: 2026
+ROWS: 4
+COLUMNS: 2
+COLUMN NAMES:
+1. metric
+2. value
+
+FILE: backend/kerala/data/csv/kerala_first_time_voters_2026.csv
+YEARS: 2026
+ROWS: 1
+COLUMNS: 2
+COLUMN NAMES:
+1. category
+2. count
+
+FILE: backend/kerala/data/csv/kerala_gender_wise_voters_2026.csv
+YEARS: 2026
+ROWS: 3
+COLUMNS: 2
+COLUMN NAMES:
+1. category
+2. voters
+
+FILE: backend/kerala/data/csv/kerala_lok_sabha_election_2014.csv
+YEARS: 2014
+ROWS: 4
+COLUMNS: 4
+COLUMN NAMES:
+1. party
+2. seats_won
+3. votes
+4. vote_share
+
+FILE: backend/kerala/data/csv/kerala_lok_sabha_election_2019.csv
+YEARS: 2019
+ROWS: 4
+COLUMNS: 4
+COLUMN NAMES:
+1. party
+2. seats_won
+3. votes
+4. vote_share
+
+FILE: backend/kerala/data/csv/kerala_lok_sabha_election_2024.csv
+YEARS: 2024
+ROWS: 4
+COLUMNS: 4
+COLUMN NAMES:
+1. party
+2. seats_won
+3. votes
+4. vote_share
+
+FILE: backend/kerala/data/csv/kerala_main_parties_2026.csv
+YEARS: 2026
+ROWS: 20
+COLUMNS: 4
+COLUMN NAMES:
+1. front
+2. party
+3. leader
+4. status
+
+FILE: backend/kerala/data/csv/kerala_nominations_and_candidates_2026.csv
+YEARS: 2026
+ROWS: 5
+COLUMNS: 2
+COLUMN NAMES:
+1. metric
+2. count
+
+FILE: backend/kerala/data/csv/kerala_party_wise_seat_table_2026.csv
+YEARS: 2026
+ROWS: 23
+COLUMNS: 5
+COLUMN NAMES:
+1. front
+2. party
+3. seats
+4. status
+5. front_total
+
+FILE: backend/kerala/data/csv/kerala_past_election_projection_summary.csv
+YEARS: Not specified
+ROWS: 4
+COLUMNS: 7
+COLUMN NAMES:
+1. projection_type
+2. total_constituencies
+3. data_reference
+4. projected_winner
+5. average_winning_score
+6. interpretation
+7. source_files
+
+FILE: backend/kerala/data/csv/kerala_people_yet_to_vote_2026.csv
+YEARS: 2026
+ROWS: 3
+COLUMNS: 2
+COLUMN NAMES:
+1. metric
+2. value
+
+FILE: backend/kerala/data/csv/kerala_prediction_scenarios_2026.csv
+YEARS: 2026
+ROWS: 140
+COLUMNS: 15
+COLUMN NAMES:
+1. constituency
+2. district
+3. region_5way
+4. base_model_winner
+5. base_model_ldf_pct
+6. base_model_udf_pct
+7. base_model_nda_pct
+8. base_model_others_pct
+9. votevibe_winner
+10. votevibe_ldf_pct
+11. votevibe_udf_pct
+12. votevibe_nda_pct
+13. votevibe_others_pct
+14. scenario_source
+15. scenario_notes
+
+FILE: backend/kerala/data/csv/kerala_sentiment_analysis_2026.csv
+YEARS: 2026
+ROWS: 4
+COLUMNS: 8
+COLUMN NAMES:
+1. party
+2. current_position
+3. official_turnout_pct_latest
+4. women_turnout_pct_latest
+5. male_turnout_pct_latest
+6. result_status
+7. counting_date
+8. confidence
+
+FILE: backend/kerala/data/csv/predictions_2026.csv
+YEARS: 2026
+ROWS: 140
+COLUMNS: 12
+COLUMN NAMES:
+1. constituency
+2. district
+3. predicted
+4. confidence
+5. LDF
+6. UDF
+7. NDA
+8. OTHERS
+9. vs_LDF
+10. vs_UDF
+11. vs_NDA
+12. vs_OTHERS
+
+FILE: backend/kerala/data/csv/predictions_scenarios_2026.csv
+YEARS: 2026
+ROWS: 140
+COLUMNS: 22
+COLUMN NAMES:
+1. constituency
+2. district
+3. base_model_winner
+4. base_model_confidence
+5. base_model_ldf_pct
+6. base_model_udf_pct
+7. base_model_nda_pct
+8. base_model_others_pct
+9. votevibe_scenario_winner
+10. votevibe_ldf_adjusted_pct
+11. votevibe_udf_adjusted_pct
+12. votevibe_nda_adjusted_pct
+13. votevibe_others_adjusted_pct
+14. cvoter_scenario_winner
+15. cvoter_ldf_adjusted_pct
+16. cvoter_udf_adjusted_pct
+17. cvoter_nda_adjusted_pct
+18. cvoter_others_adjusted_pct
+19. final_weighted_winner
+20. final_prediction_confidence
+21. scenario_source
+22. scenario_notes

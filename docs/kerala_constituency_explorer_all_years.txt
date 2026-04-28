@@ -1,0 +1,865 @@
+KERALA CONSTITUENCY EXPLORER - ALL AVAILABLE YEARS
+Generated from backend/kerala AC-level datasets
+
+Note: 2011 and 2014 rows are marked Not available/NA because source file does not provide AC-level party score splits.
+Note: 2016 source has winner party but no AC-level party score split in this repo.
+Note: 2021 provides winner vote share; full party score split is not available in source.
+
+YEAR: 2011
+AC No	Constituency	District	Predicted	Winning Score	LDF	UDF	NDA	OTHERS
+1	Manjeshwaram	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+2	Kasaragod	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+3	Udma	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+4	Kanhangad	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+5	Thrikkaripur	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+6	Payyannur	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+7	Kalliasseri	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+8	Thalassery	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+9	Dharmadom	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+10	Thaliparamba	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+11	Irikkur	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+12	Azhikode	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+13	Kannur	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+14	Kuthuparamba	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+15	Mattannur	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+16	Peravoor	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+17	Mananthavady	Wayanad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+18	Sulthan Bathery	Wayanad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+19	Kalpetta	Wayanad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+20	Vatakara	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+21	Kuttiady	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+22	Nadapuram	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+23	Koyilandy	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+24	Perambra	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+25	Balusseri	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+26	Elathur	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+27	Kozhikode North	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+28	Kozhikode South	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+29	Beypore	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+30	Kunnamangalam	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+31	Koduvally	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+32	Thiruvambadi	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+33	Kondotty	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+34	Eranad	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+35	Nilambur	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+36	Wandoor	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+37	Manjeri	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+38	Perinthalmanna	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+39	Mankada	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+40	Malappuram	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+41	Vengara	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+42	Vallikunnu	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+43	Tirurangadi	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+44	Tanur	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+45	Tirur	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+46	Kottakkal	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+47	Thavanur	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+48	Ponnani	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+49	Thrithala	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+50	Pattambi	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+51	Shornur	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+52	Ottappalam	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+53	Kongad	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+54	Mannarkkad	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+55	Malampuzha	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+56	Palakkad	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+57	Tarur	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+58	Chittur	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+59	Nenmara	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+60	Alathur	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+61	Chelakkara	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+62	Kunnamkulam	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+63	Guruvayoor	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+64	Manalur	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+65	Wadakkanchery	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+66	Ollur	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+67	Thrissur	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+68	Nattika	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+69	Kaipamangalam	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+70	Irinjalakuda	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+71	Puthukkad	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+72	Chalakudy	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+73	Kodungallur	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+74	Perumbavoor	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+75	Angamaly	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+76	Aluva	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+77	Kalamassery	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+78	Paravur	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+79	Vypin	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+80	Kochi	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+81	Thripunithura	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+82	Ernakulam	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+83	Thrikkakara	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+84	Kunnathunad	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+85	Piravom	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+86	Muvattupuzha	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+87	Kothamangalam	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+88	Devikulam	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+89	Udumbanchola	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+90	Thodupuzha	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+91	Idukki	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+92	Peerumede	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+93	Pala	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+94	Kaduthuruthy	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+95	Vaikom	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+96	Ettumanoor	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+97	Kottayam	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+98	Puthuppally	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+99	Changanassery	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+100	Kanjirappally	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+101	Poonjar	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+102	Aroor	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+103	Cherthala	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+104	Alappuzha	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+105	Ambalappuzha	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+106	Kuttanad	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+107	Haripad	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+108	Kayamkulam	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+109	Mavelikkara	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+110	Chengannur	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+111	Thiruvalla	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+112	Ranni	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+113	Aranmula	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+114	Konni	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+115	Adoor	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+116	Karunagapally	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+117	Chavara	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+118	Kunnathur	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+119	Kottarakkara	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+120	Pathanapuram	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+121	Punalur	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+122	Chadayamangalam	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+123	Kundara	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+124	Kollam	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+125	Eravipuram	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+126	Chathannoor	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+127	Varkala	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+128	Attingal	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+129	Chirayinkeezhu	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+130	Nedumangad	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+131	Vamanapuram	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+132	Kazhakoottam	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+133	Vattiyoorkavu	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+134	Thiruvananthapuram	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+135	Nemom	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+136	Aruvikkara	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+137	Parassala	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+138	Kattakada	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+139	Kovalam	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+140	Neyyattinkara	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+
+YEAR: 2014
+AC No	Constituency	District	Predicted	Winning Score	LDF	UDF	NDA	OTHERS
+1	Manjeshwaram	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+2	Kasaragod	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+3	Udma	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+4	Kanhangad	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+5	Thrikkaripur	Kasaragod	Not available in uploaded dataset	NA	NA	NA	NA	NA
+6	Payyannur	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+7	Kalliasseri	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+8	Thalassery	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+9	Dharmadom	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+10	Thaliparamba	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+11	Irikkur	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+12	Azhikode	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+13	Kannur	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+14	Kuthuparamba	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+15	Mattannur	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+16	Peravoor	Kannur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+17	Mananthavady	Wayanad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+18	Sulthan Bathery	Wayanad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+19	Kalpetta	Wayanad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+20	Vatakara	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+21	Kuttiady	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+22	Nadapuram	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+23	Koyilandy	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+24	Perambra	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+25	Balusseri	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+26	Elathur	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+27	Kozhikode North	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+28	Kozhikode South	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+29	Beypore	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+30	Kunnamangalam	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+31	Koduvally	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+32	Thiruvambadi	Kozhikode	Not available in uploaded dataset	NA	NA	NA	NA	NA
+33	Kondotty	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+34	Eranad	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+35	Nilambur	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+36	Wandoor	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+37	Manjeri	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+38	Perinthalmanna	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+39	Mankada	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+40	Malappuram	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+41	Vengara	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+42	Vallikunnu	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+43	Tirurangadi	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+44	Tanur	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+45	Tirur	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+46	Kottakkal	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+47	Thavanur	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+48	Ponnani	Malappuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+49	Thrithala	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+50	Pattambi	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+51	Shornur	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+52	Ottappalam	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+53	Kongad	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+54	Mannarkkad	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+55	Malampuzha	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+56	Palakkad	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+57	Tarur	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+58	Chittur	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+59	Nenmara	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+60	Alathur	Palakkad	Not available in uploaded dataset	NA	NA	NA	NA	NA
+61	Chelakkara	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+62	Kunnamkulam	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+63	Guruvayoor	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+64	Manalur	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+65	Wadakkanchery	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+66	Ollur	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+67	Thrissur	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+68	Nattika	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+69	Kaipamangalam	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+70	Irinjalakuda	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+71	Puthukkad	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+72	Chalakudy	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+73	Kodungallur	Thrissur	Not available in uploaded dataset	NA	NA	NA	NA	NA
+74	Perumbavoor	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+75	Angamaly	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+76	Aluva	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+77	Kalamassery	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+78	Paravur	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+79	Vypin	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+80	Kochi	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+81	Thripunithura	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+82	Ernakulam	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+83	Thrikkakara	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+84	Kunnathunad	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+85	Piravom	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+86	Muvattupuzha	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+87	Kothamangalam	Ernakulam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+88	Devikulam	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+89	Udumbanchola	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+90	Thodupuzha	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+91	Idukki	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+92	Peerumede	Idukki	Not available in uploaded dataset	NA	NA	NA	NA	NA
+93	Pala	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+94	Kaduthuruthy	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+95	Vaikom	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+96	Ettumanoor	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+97	Kottayam	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+98	Puthuppally	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+99	Changanassery	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+100	Kanjirappally	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+101	Poonjar	Kottayam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+102	Aroor	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+103	Cherthala	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+104	Alappuzha	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+105	Ambalappuzha	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+106	Kuttanad	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+107	Haripad	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+108	Kayamkulam	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+109	Mavelikkara	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+110	Chengannur	Alappuzha	Not available in uploaded dataset	NA	NA	NA	NA	NA
+111	Thiruvalla	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+112	Ranni	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+113	Aranmula	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+114	Konni	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+115	Adoor	Pathanamthitta	Not available in uploaded dataset	NA	NA	NA	NA	NA
+116	Karunagapally	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+117	Chavara	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+118	Kunnathur	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+119	Kottarakkara	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+120	Pathanapuram	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+121	Punalur	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+122	Chadayamangalam	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+123	Kundara	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+124	Kollam	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+125	Eravipuram	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+126	Chathannoor	Kollam	Not available in uploaded dataset	NA	NA	NA	NA	NA
+127	Varkala	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+128	Attingal	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+129	Chirayinkeezhu	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+130	Nedumangad	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+131	Vamanapuram	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+132	Kazhakoottam	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+133	Vattiyoorkavu	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+134	Thiruvananthapuram	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+135	Nemom	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+136	Aruvikkara	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+137	Parassala	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+138	Kattakada	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+139	Kovalam	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+140	Neyyattinkara	Thiruvananthapuram	Not available in uploaded dataset	NA	NA	NA	NA	NA
+
+YEAR: 2016
+AC No	Constituency	District	Predicted	Winning Score	LDF	UDF	NDA	OTHERS
+1	Manjeshwaram	Kasaragod	UDF	NA	NA	NA	NA	NA
+2	Kasaragod	Kasaragod	UDF	NA	NA	NA	NA	NA
+3	Udma	Kasaragod	LDF	NA	NA	NA	NA	NA
+4	Kanhangad	Kasaragod	LDF	NA	NA	NA	NA	NA
+5	Thrikkaripur	Kasaragod	LDF	NA	NA	NA	NA	NA
+6	Payyannur	Kannur	LDF	NA	NA	NA	NA	NA
+7	Kalliasseri	Kannur	LDF	NA	NA	NA	NA	NA
+8	Thalassery	Kannur	LDF	NA	NA	NA	NA	NA
+9	Dharmadom	Kannur	LDF	NA	NA	NA	NA	NA
+10	Thaliparamba	Kannur	LDF	NA	NA	NA	NA	NA
+11	Irikkur	Kannur	UDF	NA	NA	NA	NA	NA
+12	Azhikode	Kannur	LDF	NA	NA	NA	NA	NA
+13	Kannur	Kannur	LDF	NA	NA	NA	NA	NA
+14	Kuthuparamba	Kannur	LDF	NA	NA	NA	NA	NA
+15	Mattannur	Kannur	LDF	NA	NA	NA	NA	NA
+16	Peravoor	Kannur	UDF	NA	NA	NA	NA	NA
+17	Mananthavady	Wayanad	LDF	NA	NA	NA	NA	NA
+18	Sulthan Bathery	Wayanad	UDF	NA	NA	NA	NA	NA
+19	Kalpetta	Wayanad	UDF	NA	NA	NA	NA	NA
+20	Vatakara	Kozhikode	LDF	NA	NA	NA	NA	NA
+21	Kuttiady	Kozhikode	LDF	NA	NA	NA	NA	NA
+22	Nadapuram	Kozhikode	LDF	NA	NA	NA	NA	NA
+23	Koyilandy	Kozhikode	LDF	NA	NA	NA	NA	NA
+24	Perambra	Kozhikode	LDF	NA	NA	NA	NA	NA
+25	Balusseri	Kozhikode	LDF	NA	NA	NA	NA	NA
+26	Elathur	Kozhikode	LDF	NA	NA	NA	NA	NA
+27	Kozhikode North	Kozhikode	LDF	NA	NA	NA	NA	NA
+28	Kozhikode South	Kozhikode	LDF	NA	NA	NA	NA	NA
+29	Beypore	Kozhikode	LDF	NA	NA	NA	NA	NA
+30	Kunnamangalam	Kozhikode	UDF	NA	NA	NA	NA	NA
+31	Koduvally	Kozhikode	UDF	NA	NA	NA	NA	NA
+32	Thiruvambadi	Kozhikode	UDF	NA	NA	NA	NA	NA
+33	Kondotty	Malappuram	UDF	NA	NA	NA	NA	NA
+34	Eranad	Malappuram	UDF	NA	NA	NA	NA	NA
+35	Nilambur	Malappuram	UDF	NA	NA	NA	NA	NA
+36	Wandoor	Malappuram	UDF	NA	NA	NA	NA	NA
+37	Manjeri	Malappuram	UDF	NA	NA	NA	NA	NA
+38	Perinthalmanna	Malappuram	UDF	NA	NA	NA	NA	NA
+39	Mankada	Malappuram	UDF	NA	NA	NA	NA	NA
+40	Malappuram	Malappuram	UDF	NA	NA	NA	NA	NA
+41	Vengara	Malappuram	UDF	NA	NA	NA	NA	NA
+42	Vallikunnu	Malappuram	UDF	NA	NA	NA	NA	NA
+43	Tirurangadi	Malappuram	UDF	NA	NA	NA	NA	NA
+44	Tanur	Malappuram	LDF	NA	NA	NA	NA	NA
+45	Tirur	Malappuram	UDF	NA	NA	NA	NA	NA
+46	Kottakkal	Malappuram	UDF	NA	NA	NA	NA	NA
+47	Thavanur	Malappuram	LDF	NA	NA	NA	NA	NA
+48	Ponnani	Malappuram	LDF	NA	NA	NA	NA	NA
+49	Thrithala	Palakkad	UDF	NA	NA	NA	NA	NA
+50	Pattambi	Palakkad	LDF	NA	NA	NA	NA	NA
+51	Shornur	Palakkad	LDF	NA	NA	NA	NA	NA
+52	Ottappalam	Palakkad	LDF	NA	NA	NA	NA	NA
+53	Kongad	Palakkad	LDF	NA	NA	NA	NA	NA
+54	Mannarkkad	Palakkad	UDF	NA	NA	NA	NA	NA
+55	Malampuzha	Palakkad	LDF	NA	NA	NA	NA	NA
+56	Palakkad	Palakkad	UDF	NA	NA	NA	NA	NA
+57	Tarur	Palakkad	LDF	NA	NA	NA	NA	NA
+58	Chittur	Palakkad	LDF	NA	NA	NA	NA	NA
+59	Nenmara	Palakkad	LDF	NA	NA	NA	NA	NA
+60	Alathur	Palakkad	UDF	NA	NA	NA	NA	NA
+61	Chelakkara	Thrissur	LDF	NA	NA	NA	NA	NA
+62	Kunnamkulam	Thrissur	LDF	NA	NA	NA	NA	NA
+63	Guruvayoor	Thrissur	LDF	NA	NA	NA	NA	NA
+64	Manalur	Thrissur	LDF	NA	NA	NA	NA	NA
+65	Wadakkanchery	Thrissur	LDF	NA	NA	NA	NA	NA
+66	Ollur	Thrissur	LDF	NA	NA	NA	NA	NA
+67	Thrissur	Thrissur	UDF	NA	NA	NA	NA	NA
+68	Nattika	Thrissur	LDF	NA	NA	NA	NA	NA
+69	Kaipamangalam	Thrissur	LDF	NA	NA	NA	NA	NA
+70	Irinjalakuda	Thrissur	UDF	NA	NA	NA	NA	NA
+71	Puthukkad	Thrissur	LDF	NA	NA	NA	NA	NA
+72	Chalakudy	Thrissur	UDF	NA	NA	NA	NA	NA
+73	Kodungallur	Thrissur	LDF	NA	NA	NA	NA	NA
+74	Perumbavoor	Ernakulam	UDF	NA	NA	NA	NA	NA
+75	Angamaly	Ernakulam	UDF	NA	NA	NA	NA	NA
+76	Aluva	Ernakulam	UDF	NA	NA	NA	NA	NA
+77	Kalamassery	Ernakulam	LDF	NA	NA	NA	NA	NA
+78	Paravur	Ernakulam	UDF	NA	NA	NA	NA	NA
+79	Vypin	Ernakulam	LDF	NA	NA	NA	NA	NA
+80	Kochi	Ernakulam	LDF	NA	NA	NA	NA	NA
+81	Thripunithura	Ernakulam	UDF	NA	NA	NA	NA	NA
+82	Ernakulam	Ernakulam	UDF	NA	NA	NA	NA	NA
+83	Thrikkakara	Ernakulam	UDF	NA	NA	NA	NA	NA
+84	Kunnathunad	Ernakulam	LDF	NA	NA	NA	NA	NA
+85	Piravom	Ernakulam	UDF	NA	NA	NA	NA	NA
+86	Muvattupuzha	Ernakulam	UDF	NA	NA	NA	NA	NA
+87	Kothamangalam	Ernakulam	LDF	NA	NA	NA	NA	NA
+88	Devikulam	Idukki	LDF	NA	NA	NA	NA	NA
+89	Udumbanchola	Idukki	LDF	NA	NA	NA	NA	NA
+90	Thodupuzha	Idukki	UDF	NA	NA	NA	NA	NA
+91	Idukki	Idukki	UDF	NA	NA	NA	NA	NA
+92	Peerumede	Idukki	UDF	NA	NA	NA	NA	NA
+93	Pala	Kottayam	UDF	NA	NA	NA	NA	NA
+94	Kaduthuruthy	Kottayam	UDF	NA	NA	NA	NA	NA
+95	Vaikom	Kottayam	LDF	NA	NA	NA	NA	NA
+96	Ettumanoor	Kottayam	LDF	NA	NA	NA	NA	NA
+97	Kottayam	Kottayam	UDF	NA	NA	NA	NA	NA
+98	Puthuppally	Kottayam	UDF	NA	NA	NA	NA	NA
+99	Changanassery	Kottayam	UDF	NA	NA	NA	NA	NA
+100	Kanjirappally	Kottayam	UDF	NA	NA	NA	NA	NA
+101	Poonjar	Kottayam	UDF	NA	NA	NA	NA	NA
+102	Aroor	Alappuzha	LDF	NA	NA	NA	NA	NA
+103	Cherthala	Alappuzha	LDF	NA	NA	NA	NA	NA
+104	Alappuzha	Alappuzha	LDF	NA	NA	NA	NA	NA
+105	Ambalappuzha	Alappuzha	LDF	NA	NA	NA	NA	NA
+106	Kuttanad	Alappuzha	UDF	NA	NA	NA	NA	NA
+107	Haripad	Alappuzha	UDF	NA	NA	NA	NA	NA
+108	Kayamkulam	Alappuzha	LDF	NA	NA	NA	NA	NA
+109	Mavelikkara	Alappuzha	LDF	NA	NA	NA	NA	NA
+110	Chengannur	Alappuzha	UDF	NA	NA	NA	NA	NA
+111	Thiruvalla	Pathanamthitta	UDF	NA	NA	NA	NA	NA
+112	Ranni	Pathanamthitta	UDF	NA	NA	NA	NA	NA
+113	Aranmula	Pathanamthitta	LDF	NA	NA	NA	NA	NA
+114	Konni	Pathanamthitta	LDF	NA	NA	NA	NA	NA
+115	Adoor	Pathanamthitta	UDF	NA	NA	NA	NA	NA
+116	Karunagapally	Kollam	UDF	NA	NA	NA	NA	NA
+117	Chavara	Kollam	LDF	NA	NA	NA	NA	NA
+118	Kunnathur	Kollam	LDF	NA	NA	NA	NA	NA
+119	Kottarakkara	Kollam	LDF	NA	NA	NA	NA	NA
+120	Pathanapuram	Kollam	UDF	NA	NA	NA	NA	NA
+121	Punalur	Kollam	LDF	NA	NA	NA	NA	NA
+122	Chadayamangalam	Kollam	LDF	NA	NA	NA	NA	NA
+123	Kundara	Kollam	UDF	NA	NA	NA	NA	NA
+124	Kollam	Kollam	LDF	NA	NA	NA	NA	NA
+125	Eravipuram	Kollam	LDF	NA	NA	NA	NA	NA
+126	Chathannoor	Kollam	UDF	NA	NA	NA	NA	NA
+127	Varkala	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+128	Attingal	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+129	Chirayinkeezhu	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+130	Nedumangad	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+131	Vamanapuram	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+132	Kazhakoottam	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+133	Vattiyoorkavu	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+134	Thiruvananthapuram	Thiruvananthapuram	UDF	NA	NA	NA	NA	NA
+135	Nemom	Thiruvananthapuram	NDA	NA	NA	NA	NA	NA
+136	Aruvikkara	Thiruvananthapuram	UDF	NA	NA	NA	NA	NA
+137	Parassala	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+138	Kattakada	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+139	Kovalam	Thiruvananthapuram	UDF	NA	NA	NA	NA	NA
+140	Neyyattinkara	Thiruvananthapuram	LDF	NA	NA	NA	NA	NA
+
+YEAR: 2021
+AC No	Constituency	District	Predicted	Winning Score	LDF	UDF	NDA	OTHERS
+1	Manjeshwaram	Kasaragod	UDF	50.28	NA	50.28	NA	NA
+2	Kasaragod	Kasaragod	UDF	55.67	NA	55.67	NA	NA
+3	Udma	Kasaragod	LDF	54.63	54.63	NA	NA	NA
+4	Kanhangad	Kasaragod	LDF	59.55	59.55	NA	NA	NA
+5	Thrikkaripur	Kasaragod	LDF	58.94	58.94	NA	NA	NA
+6	Payyannur	Kannur	LDF	65.20	65.20	NA	NA	NA
+7	Kalliasseri	Kannur	LDF	63.83	63.83	NA	NA	NA
+8	Thalassery	Kannur	LDF	62.07	62.07	NA	NA	NA
+9	Dharmadom	Kannur	LDF	65.64	65.64	NA	NA	NA
+10	Thaliparamba	Kannur	LDF	56.96	56.96	NA	NA	NA
+11	Irikkur	Kannur	UDF	53.49	NA	53.49	NA	NA
+12	Azhikode	Kannur	LDF	52.45	52.45	NA	NA	NA
+13	Kannur	Kannur	LDF	50.73	50.73	NA	NA	NA
+14	Kuthuparamba	Kannur	LDF	53.62	53.62	NA	NA	NA
+15	Mattannur	Kannur	LDF	65.78	65.78	NA	NA	NA
+16	Peravoor	Kannur	UDF	51.22	NA	51.22	NA	NA
+17	Mananthavady	Wayanad	LDF	53.34	53.34	NA	NA	NA
+18	Sulthan Bathery	Wayanad	UDF	53.83	NA	53.83	NA	NA
+19	Kalpetta	Wayanad	UDF	51.98	NA	51.98	NA	NA
+20	Vatakara	Kozhikode	LDF	53.05	53.05	NA	NA	NA
+21	Kuttiady	Kozhikode	LDF	50.10	50.10	NA	NA	NA
+22	Nadapuram	Kozhikode	LDF	51.08	51.08	NA	NA	NA
+23	Koyilandy	Kozhikode	LDF	52.97	52.97	NA	NA	NA
+24	Perambra	Kozhikode	LDF	57.56	57.56	NA	NA	NA
+25	Balusseri	Kozhikode	LDF	56.24	56.24	NA	NA	NA
+26	Elathur	Kozhikode	LDF	62.59	62.59	NA	NA	NA
+27	Kozhikode North	Kozhikode	LDF	54.18	54.18	NA	NA	NA
+28	Kozhikode South	Kozhikode	LDF	51.25	51.25	NA	NA	NA
+29	Beypore	Kozhikode	LDF	60.60	60.60	NA	NA	NA
+30	Kunnamangalam	Kozhikode	LDF	53.21	53.21	NA	NA	NA
+31	Koduvally	Kozhikode	UDF	52.29	NA	52.29	NA	NA
+32	Thiruvambadi	Kozhikode	LDF	51.77	51.77	NA	NA	NA
+33	Kondotty	Malappuram	UDF	56.17	NA	56.17	NA	NA
+34	Eranad	Malappuram	UDF	58.44	NA	58.44	NA	NA
+35	Nilambur	Malappuram	LDF	50.85	50.85	NA	NA	NA
+36	Wandoor	Malappuram	UDF	54.89	NA	54.89	NA	NA
+37	Manjeri	Malappuram	UDF	55.09	NA	55.09	NA	NA
+38	Perinthalmanna	Malappuram	UDF	50.01	NA	50.01	NA	NA
+39	Mankada	Malappuram	UDF	51.95	NA	51.95	NA	NA
+40	Malappuram	Malappuram	UDF	61.65	NA	61.65	NA	NA
+41	Vengara	Malappuram	UDF	58.40	NA	58.40	NA	NA
+42	Vallikunnu	Malappuram	UDF	55.45	NA	55.45	NA	NA
+43	Tirurangadi	Malappuram	UDF	53.48	NA	53.48	NA	NA
+44	Tanur	Malappuram	LDF	50.35	50.35	NA	NA	NA
+45	Tirur	Malappuram	UDF	52.21	NA	52.21	NA	NA
+46	Kottakkal	Malappuram	UDF	55.65	NA	55.65	NA	NA
+47	Thavanur	Malappuram	LDF	50.93	50.93	NA	NA	NA
+48	Ponnani	Malappuram	LDF	56.44	56.44	NA	NA	NA
+49	Thrithala	Palakkad	LDF	51.10	51.10	NA	NA	NA
+50	Pattambi	Palakkad	LDF	56.78	56.78	NA	NA	NA
+51	Shornur	Palakkad	LDF	59.81	59.81	NA	NA	NA
+52	Ottappalam	Palakkad	LDF	55.63	55.63	NA	NA	NA
+53	Kongad	Palakkad	LDF	57.58	57.58	NA	NA	NA
+54	Mannarkkad	Palakkad	UDF	52.14	NA	52.14	NA	NA
+55	Malampuzha	Palakkad	LDF	60.20	60.20	NA	NA	NA
+56	Palakkad	Palakkad	UDF	51.85	NA	51.85	NA	NA
+57	Tarur	Palakkad	LDF	57.53	57.53	NA	NA	NA
+58	Chittur	Palakkad	LDF	62.50	62.50	NA	NA	NA
+59	Nenmara	Palakkad	LDF	60.62	60.62	NA	NA	NA
+60	Alathur	Palakkad	LDF	59.89	59.89	NA	NA	NA
+61	Chelakkara	Thrissur	LDF	62.52	62.52	NA	NA	NA
+62	Kunnamkulam	Thrissur	LDF	60.17	60.17	NA	NA	NA
+63	Guruvayoor	Thrissur	LDF	56.72	56.72	NA	NA	NA
+64	Manalur	Thrissur	LDF	61.04	61.04	NA	NA	NA
+65	Wadakkanchery	Thrissur	LDF	55.16	55.16	NA	NA	NA
+66	Ollur	Thrissur	LDF	58.16	58.16	NA	NA	NA
+67	Thrissur	Thrissur	LDF	46.96	46.96	NA	NA	NA
+68	Nattika	Thrissur	LDF	59.33	59.33	NA	NA	NA
+69	Kaipamangalam	Thrissur	LDF	59.18	59.18	NA	NA	NA
+70	Irinjalakuda	Thrissur	LDF	52.50	52.50	NA	NA	NA
+71	Puthukkad	Thrissur	LDF	59.47	59.47	NA	NA	NA
+72	Chalakudy	Thrissur	UDF	50.43	NA	50.43	NA	NA
+73	Kodungallur	Thrissur	LDF	58.83	58.83	NA	NA	NA
+74	Perumbavoor	Ernakulam	UDF	51.39	NA	51.39	NA	NA
+75	Angamaly	Ernakulam	UDF	56.26	NA	56.26	NA	NA
+76	Aluva	Ernakulam	UDF	57.35	NA	57.35	NA	NA
+77	Kalamassery	Ernakulam	LDF	55.52	55.52	NA	NA	NA
+78	Paravur	Ernakulam	UDF	57.44	NA	57.44	NA	NA
+79	Vypin	Ernakulam	LDF	51.86	51.86	NA	NA	NA
+80	Kochi	Ernakulam	LDF	52.21	52.21	NA	NA	NA
+81	Thripunithura	Ernakulam	UDF	50.38	NA	50.38	NA	NA
+82	Ernakulam	Ernakulam	UDF	47.58	NA	47.58	NA	NA
+83	Thrikkakara	Ernakulam	UDF	54.48	NA	54.48	NA	NA
+84	Kunnathunad	Ernakulam	LDF	51.15	51.15	NA	NA	NA
+85	Piravom	Ernakulam	UDF	58.76	NA	58.76	NA	NA
+86	Muvattupuzha	Ernakulam	UDF	52.51	NA	52.51	NA	NA
+87	Kothamangalam	Ernakulam	LDF	52.71	52.71	NA	NA	NA
+88	Devikulam	Idukki	LDF	53.56	53.56	NA	NA	NA
+89	Udumbanchola	Idukki	LDF	60.75	60.75	NA	NA	NA
+90	Thodupuzha	Idukki	UDF	57.44	NA	57.44	NA	NA
+91	Idukki	Idukki	LDF	52.34	52.34	NA	NA	NA
+92	Peerumede	Idukki	LDF	50.77	50.77	NA	NA	NA
+93	Pala	Kottayam	LDF	56.19	56.19	NA	NA	NA
+94	Kaduthuruthy	Kottayam	UDF	51.85	NA	51.85	NA	NA
+95	Vaikom	Kottayam	LDF	58.81	58.81	NA	NA	NA
+96	Ettumanoor	Kottayam	LDF	53.83	53.83	NA	NA	NA
+97	Kottayam	Kottayam	UDF	56.67	NA	56.67	NA	NA
+98	Puthuppally	Kottayam	UDF	53.84	NA	53.84	NA	NA
+99	Changanassery	Kottayam	LDF	52.57	52.57	NA	NA	NA
+100	Kanjirappally	Kottayam	LDF	54.67	54.67	NA	NA	NA
+101	Poonjar	Kottayam	UDF	53.99	NA	53.99	NA	NA
+102	Aroor	Alappuzha	LDF	52.42	52.42	NA	NA	NA
+103	Cherthala	Alappuzha	LDF	51.91	51.91	NA	NA	NA
+104	Alappuzha	Alappuzha	LDF	54.31	54.31	NA	NA	NA
+105	Ambalappuzha	Alappuzha	LDF	54.98	54.98	NA	NA	NA
+106	Kuttanad	Alappuzha	LDF	52.52	52.52	NA	NA	NA
+107	Haripad	Alappuzha	UDF	55.18	NA	55.18	NA	NA
+108	Kayamkulam	Alappuzha	LDF	52.12	52.12	NA	NA	NA
+109	Mavelikkara	Alappuzha	LDF	58.93	58.93	NA	NA	NA
+110	Chengannur	Alappuzha	LDF	58.78	58.78	NA	NA	NA
+111	Thiruvalla	Pathanamthitta	LDF	55.06	55.06	NA	NA	NA
+112	Ranni	Pathanamthitta	LDF	47.24	47.24	NA	NA	NA
+113	Aranmula	Pathanamthitta	LDF	57.26	57.26	NA	NA	NA
+114	Konni	Pathanamthitta	LDF	53.66	53.66	NA	NA	NA
+115	Adoor	Pathanamthitta	UDF	51.41	NA	51.41	NA	NA
+116	Karunagapally	Kollam	UDF	59.16	NA	59.16	NA	NA
+117	Chavara	Kollam	LDF	50.44	50.44	NA	NA	NA
+118	Kunnathur	Kollam	LDF	51.03	51.03	NA	NA	NA
+119	Kottarakkara	Kollam	LDF	54.27	54.27	NA	NA	NA
+120	Pathanapuram	Kollam	LDF	55.97	55.97	NA	NA	NA
+121	Punalur	Kollam	LDF	61.66	61.66	NA	NA	NA
+122	Chadayamangalam	Kollam	LDF	55.66	55.66	NA	NA	NA
+123	Kundara	Kollam	UDF	51.50	NA	51.50	NA	NA
+124	Kollam	Kollam	LDF	50.90	50.90	NA	NA	NA
+125	Eravipuram	Kollam	LDF	58.87	58.87	NA	NA	NA
+126	Chathannoor	Kollam	LDF	54.25	54.25	NA	NA	NA
+127	Varkala	Thiruvananthapuram	LDF	57.44	57.44	NA	NA	NA
+128	Attingal	Thiruvananthapuram	LDF	58.30	58.30	NA	NA	NA
+129	Chirayinkeezhu	Thiruvananthapuram	LDF	55.61	55.61	NA	NA	NA
+130	Nedumangad	Thiruvananthapuram	LDF	59.26	59.26	NA	NA	NA
+131	Vamanapuram	Thiruvananthapuram	LDF	53.76	53.76	NA	NA	NA
+132	Kazhakoottam	Thiruvananthapuram	LDF	56.02	56.02	NA	NA	NA
+133	Vattiyoorkavu	Thiruvananthapuram	LDF	55.00	55.00	NA	NA	NA
+134	Thiruvananthapuram	Thiruvananthapuram	LDF	49.37	49.37	NA	NA	NA
+135	Nemom	Thiruvananthapuram	LDF	51.83	51.83	NA	NA	NA
+136	Aruvikkara	Thiruvananthapuram	LDF	51.96	51.96	NA	NA	NA
+137	Parassala	Thiruvananthapuram	LDF	59.84	59.84	NA	NA	NA
+138	Kattakada	Thiruvananthapuram	LDF	57.01	57.01	NA	NA	NA
+139	Kovalam	Thiruvananthapuram	UDF	54.18	NA	54.18	NA	NA
+140	Neyyattinkara	Thiruvananthapuram	LDF	56.11	56.11	NA	NA	NA
+
+YEAR: 2024
+AC No	Constituency	District	Predicted	Winning Score	LDF	UDF	NDA	OTHERS
+1	Manjeshwaram	Kasaragod	UDF	44.10	35.06	44.10	19.84	1.00
+2	Kasaragod	Kasaragod	UDF	44.10	35.06	44.10	19.84	1.00
+3	Udma	Kasaragod	UDF	44.10	35.06	44.10	19.84	1.00
+4	Kanhangad	Kasaragod	UDF	44.10	35.06	44.10	19.84	1.00
+5	Thrikkaripur	Kasaragod	UDF	44.10	35.06	44.10	19.84	1.00
+6	Payyannur	Kannur	UDF	48.74	38.50	48.74	11.27	1.49
+7	Kalliasseri	Kannur	UDF	48.74	38.50	48.74	11.27	1.49
+8	Thalassery	Kannur	UDF	48.74	38.50	48.74	11.27	1.49
+9	Dharmadom	Kannur	UDF	48.74	38.50	48.74	11.27	1.49
+10	Thaliparamba	Kannur	UDF	48.74	38.50	48.74	11.27	1.49
+11	Irikkur	Kannur	UDF	48.74	38.50	48.74	11.27	1.49
+12	Azhikode	Kannur	UDF	48.74	38.50	48.74	11.27	1.49
+13	Kannur	Kannur	UDF	49.65	39.45	49.65	9.98	0.92
+14	Kuthuparamba	Kannur	UDF	49.65	39.45	49.65	9.98	0.92
+15	Mattannur	Kannur	UDF	49.65	39.45	49.65	9.98	0.92
+16	Peravoor	Kannur	UDF	49.65	39.45	49.65	9.98	0.92
+17	Mananthavady	Wayanad	UDF	59.69	26.09	59.69	13.04	1.18
+18	Sulthan Bathery	Wayanad	UDF	59.69	26.09	59.69	13.04	1.18
+19	Kalpetta	Wayanad	UDF	59.69	26.09	59.69	13.04	1.18
+20	Vatakara	Kozhikode	UDF	49.65	39.45	49.65	9.98	0.92
+21	Kuttiady	Kozhikode	UDF	49.65	39.45	49.65	9.98	0.92
+22	Nadapuram	Kozhikode	UDF	49.65	39.45	49.65	9.98	0.92
+23	Koyilandy	Kozhikode	UDF	47.74	34.33	47.74	16.56	1.37
+24	Perambra	Kozhikode	UDF	47.74	34.33	47.74	16.56	1.37
+25	Balusseri	Kozhikode	UDF	47.74	34.33	47.74	16.56	1.37
+26	Elathur	Kozhikode	UDF	47.74	34.33	47.74	16.56	1.37
+27	Kozhikode North	Kozhikode	UDF	47.74	34.33	47.74	16.56	1.37
+28	Kozhikode South	Kozhikode	UDF	47.74	34.33	47.74	16.56	1.37
+29	Beypore	Kozhikode	UDF	47.74	34.33	47.74	16.56	1.37
+30	Kunnamangalam	Kozhikode	UDF	54.81	31.84	54.81	12.15	1.20
+31	Koduvally	Kozhikode	UDF	47.74	34.33	47.74	16.56	1.37
+32	Thiruvambadi	Kozhikode	UDF	59.69	26.09	59.69	13.04	1.18
+33	Kondotty	Malappuram	UDF	59.35	31.69	59.35	7.85	1.11
+34	Eranad	Malappuram	UDF	59.69	26.09	59.69	13.04	1.18
+35	Nilambur	Malappuram	UDF	59.69	26.09	59.69	13.04	1.18
+36	Wandoor	Malappuram	UDF	59.69	26.09	59.69	13.04	1.18
+37	Manjeri	Malappuram	UDF	59.35	31.69	59.35	7.85	1.11
+38	Perinthalmanna	Malappuram	UDF	59.35	31.69	59.35	7.85	1.11
+39	Mankada	Malappuram	UDF	59.35	31.69	59.35	7.85	1.11
+40	Malappuram	Malappuram	UDF	59.35	31.69	59.35	7.85	1.11
+41	Vengara	Malappuram	UDF	59.35	31.69	59.35	7.85	1.11
+42	Vallikunnu	Malappuram	UDF	59.35	31.69	59.35	7.85	1.11
+43	Tirurangadi	Malappuram	UDF	54.81	31.84	54.81	12.15	1.20
+44	Tanur	Malappuram	UDF	54.81	31.84	54.81	12.15	1.20
+45	Tirur	Malappuram	UDF	54.81	31.84	54.81	12.15	1.20
+46	Kottakkal	Malappuram	UDF	54.81	31.84	54.81	12.15	1.20
+47	Thavanur	Malappuram	UDF	54.81	31.84	54.81	12.15	1.20
+48	Ponnani	Malappuram	UDF	54.81	31.84	54.81	12.15	1.20
+49	Thrithala	Palakkad	UDF	40.66	33.39	40.66	24.31	1.64
+50	Pattambi	Palakkad	UDF	40.66	33.39	40.66	24.31	1.64
+51	Shornur	Palakkad	UDF	40.66	33.39	40.66	24.31	1.64
+52	Ottappalam	Palakkad	UDF	40.66	33.39	40.66	24.31	1.64
+53	Kongad	Palakkad	UDF	40.66	33.39	40.66	24.31	1.64
+54	Mannarkkad	Palakkad	UDF	40.66	33.39	40.66	24.31	1.64
+55	Malampuzha	Palakkad	UDF	40.66	33.39	40.66	24.31	1.64
+56	Palakkad	Palakkad	LDF	40.66	40.66	38.63	18.97	1.74
+57	Tarur	Palakkad	LDF	40.66	40.66	38.63	18.97	1.74
+58	Chittur	Palakkad	LDF	40.66	40.66	38.63	18.97	1.74
+59	Nenmara	Palakkad	LDF	40.66	40.66	38.63	18.97	1.74
+60	Alathur	Palakkad	LDF	40.66	40.66	38.63	18.97	1.74
+61	Chelakkara	Thrissur	LDF	40.66	40.66	38.63	18.97	1.74
+62	Kunnamkulam	Thrissur	LDF	40.66	40.66	38.63	18.97	1.74
+63	Guruvayoor	Thrissur	NDA	37.80	30.95	30.35	37.80	0.90
+64	Manalur	Thrissur	NDA	37.80	30.95	30.35	37.80	0.90
+65	Wadakkanchery	Thrissur	NDA	37.80	30.95	30.35	37.80	0.90
+66	Ollur	Thrissur	NDA	37.80	30.95	30.35	37.80	0.90
+67	Thrissur	Thrissur	NDA	37.80	30.95	30.35	37.80	0.90
+68	Nattika	Thrissur	NDA	37.80	30.95	30.35	37.80	0.90
+69	Kaipamangalam	Thrissur	NDA	37.80	30.95	30.35	37.80	0.90
+70	Irinjalakuda	Thrissur	UDF	41.44	34.73	41.44	11.25	12.58
+71	Puthukkad	Thrissur	UDF	41.44	34.73	41.44	11.25	12.58
+72	Chalakudy	Thrissur	UDF	41.44	34.73	41.44	11.25	12.58
+73	Kodungallur	Thrissur	UDF	41.44	34.73	41.44	11.25	12.58
+74	Perumbavoor	Ernakulam	UDF	41.44	34.73	41.44	11.25	12.58
+75	Angamaly	Ernakulam	UDF	41.44	34.73	41.44	11.25	12.58
+76	Aluva	Ernakulam	UDF	41.44	34.73	41.44	11.25	12.58
+77	Kalamassery	Ernakulam	UDF	52.97	25.47	52.97	15.95	5.61
+78	Paravur	Ernakulam	UDF	52.97	25.47	52.97	15.95	5.61
+79	Vypin	Ernakulam	UDF	52.97	25.47	52.97	15.95	5.61
+80	Kochi	Ernakulam	UDF	52.97	25.47	52.97	15.95	5.61
+81	Thripunithura	Ernakulam	UDF	52.97	25.47	52.97	15.95	5.61
+82	Ernakulam	Ernakulam	UDF	52.97	25.47	52.97	15.95	5.61
+83	Thrikkakara	Ernakulam	UDF	52.97	25.47	52.97	15.95	5.61
+84	Kunnathunad	Ernakulam	UDF	51.43	35.53	51.43	10.88	2.16
+85	Piravom	Ernakulam	UDF	51.43	35.53	51.43	10.88	2.16
+86	Muvattupuzha	Ernakulam	UDF	51.43	35.53	51.43	10.88	2.16
+87	Kothamangalam	Ernakulam	UDF	51.43	35.53	51.43	10.88	2.16
+88	Devikulam	Idukki	UDF	51.43	35.53	51.43	10.88	2.16
+89	Udumbanchola	Idukki	UDF	51.43	35.53	51.43	10.88	2.16
+90	Thodupuzha	Idukki	UDF	51.43	35.53	51.43	10.88	2.16
+91	Idukki	Idukki	UDF	43.60	33.17	43.60	19.74	3.49
+92	Peerumede	Idukki	UDF	43.60	33.17	43.60	19.74	3.49
+93	Pala	Kottayam	UDF	43.60	33.17	43.60	19.74	3.49
+94	Kaduthuruthy	Kottayam	UDF	43.60	33.17	43.60	19.74	3.49
+95	Vaikom	Kottayam	UDF	43.60	33.17	43.60	19.74	3.49
+96	Ettumanoor	Kottayam	UDF	43.60	33.17	43.60	19.74	3.49
+97	Kottayam	Kottayam	UDF	43.60	33.17	43.60	19.74	3.49
+98	Puthuppally	Kottayam	UDF	38.21	32.21	38.21	28.30	1.28
+99	Changanassery	Kottayam	UDF	38.21	32.21	38.21	28.30	1.28
+100	Kanjirappally	Kottayam	UDF	38.21	32.21	38.21	28.30	1.28
+101	Poonjar	Kottayam	UDF	38.21	32.21	38.21	28.30	1.28
+102	Aroor	Alappuzha	UDF	38.21	32.21	38.21	28.30	1.28
+103	Cherthala	Alappuzha	UDF	38.21	32.21	38.21	28.30	1.28
+104	Alappuzha	Alappuzha	UDF	38.21	32.21	38.21	28.30	1.28
+105	Ambalappuzha	Alappuzha	UDF	41.29	40.07	41.29	16.00	2.64
+106	Kuttanad	Alappuzha	UDF	41.29	40.07	41.29	16.00	2.64
+107	Haripad	Alappuzha	UDF	41.29	40.07	41.29	16.00	2.64
+108	Kayamkulam	Alappuzha	UDF	41.29	40.07	41.29	16.00	2.64
+109	Mavelikkara	Alappuzha	UDF	41.29	40.07	41.29	16.00	2.64
+110	Chengannur	Alappuzha	UDF	41.29	40.07	41.29	16.00	2.64
+111	Thiruvalla	Pathanamthitta	UDF	41.29	40.07	41.29	16.00	2.64
+112	Ranni	Pathanamthitta	UDF	39.98	32.79	39.98	25.55	1.68
+113	Aranmula	Pathanamthitta	UDF	39.98	32.79	39.98	25.55	1.68
+114	Konni	Pathanamthitta	UDF	39.98	32.79	39.98	25.55	1.68
+115	Adoor	Pathanamthitta	UDF	39.98	32.79	39.98	25.55	1.68
+116	Karunagapally	Kollam	UDF	39.98	32.79	39.98	25.55	1.68
+117	Chavara	Kollam	UDF	48.45	32.03	48.45	17.82	1.70
+118	Kunnathur	Kollam	UDF	48.45	32.03	48.45	17.82	1.70
+119	Kottarakkara	Kollam	UDF	48.45	32.03	48.45	17.82	1.70
+120	Pathanapuram	Kollam	UDF	48.45	32.03	48.45	17.82	1.70
+121	Punalur	Kollam	UDF	48.45	32.03	48.45	17.82	1.70
+122	Chadayamangalam	Kollam	UDF	48.45	32.03	48.45	17.82	1.70
+123	Kundara	Kollam	UDF	48.45	32.03	48.45	17.82	1.70
+124	Kollam	Kollam	UDF	33.29	33.22	33.29	31.65	1.84
+125	Eravipuram	Kollam	UDF	33.29	33.22	33.29	31.65	1.84
+126	Chathannoor	Kollam	UDF	33.29	33.22	33.29	31.65	1.84
+127	Varkala	Thiruvananthapuram	UDF	33.29	33.22	33.29	31.65	1.84
+128	Attingal	Thiruvananthapuram	UDF	33.29	33.22	33.29	31.65	1.84
+129	Chirayinkeezhu	Thiruvananthapuram	UDF	33.29	33.22	33.29	31.65	1.84
+130	Nedumangad	Thiruvananthapuram	UDF	33.29	33.22	33.29	31.65	1.84
+131	Vamanapuram	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+132	Kazhakoottam	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+133	Vattiyoorkavu	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+134	Thiruvananthapuram	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+135	Nemom	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+136	Aruvikkara	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+137	Parassala	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+138	Kattakada	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+139	Kovalam	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+140	Neyyattinkara	Thiruvananthapuram	UDF	37.19	26.05	37.19	35.97	0.79
+
+YEAR: 2026
+AC No	Constituency	District	Predicted	Winning Score	LDF	UDF	NDA	OTHERS
+1	Manjeshwaram	Kasaragod	UDF	91.73	0.03	91.73	8.24	0.00
+2	Kasaragod	Kasaragod	UDF	92.11	0.02	92.11	7.86	0.00
+3	Udma	Kasaragod	LDF	95.10	95.10	4.84	0.05	0.01
+4	Kanhangad	Kasaragod	LDF	98.26	98.26	1.73	0.00	0.00
+5	Thrikkaripur	Kasaragod	LDF	97.99	97.99	2.00	0.01	0.00
+6	Payyannur	Kannur	LDF	99.98	99.98	0.02	0.00	0.00
+7	Kalliasseri	Kannur	LDF	99.98	99.98	0.02	0.00	0.00
+8	Thalassery	Kannur	LDF	99.97	99.97	0.03	0.00	0.00
+9	Dharmadom	Kannur	LDF	99.98	99.98	0.02	0.00	0.00
+10	Thaliparamba	Kannur	LDF	99.74	99.74	0.26	0.00	0.00
+11	Irikkur	Kannur	UDF	96.22	0.00	96.22	3.78	0.00
+12	Azhikode	Kannur	LDF	98.75	98.75	0.49	0.70	0.06
+13	Kannur	Kannur	LDF	93.77	93.77	3.21	2.73	0.30
+14	Kuthuparamba	Kannur	LDF	99.32	99.32	0.49	0.17	0.02
+15	Mattannur	Kannur	LDF	99.99	99.99	0.01	0.00	0.00
+16	Peravoor	Kannur	UDF	95.65	0.00	95.65	4.35	0.00
+17	Mananthavady	Wayanad	UDF	86.62	6.46	86.62	6.90	0.03
+18	Sulthan Bathery	Wayanad	UDF	94.35	0.00	94.35	5.65	0.00
+19	Kalpetta	Wayanad	UDF	91.02	0.00	91.02	8.98	0.00
+20	Vatakara	Kozhikode	LDF	74.13	74.13	24.49	0.70	0.69
+21	Kuttiady	Kozhikode	UDF	63.27	35.38	63.27	0.57	0.77
+22	Nadapuram	Kozhikode	LDF	49.84	49.84	48.93	0.46	0.78
+23	Koyilandy	Kozhikode	LDF	73.13	73.13	25.50	0.68	0.70
+24	Perambra	Kozhikode	LDF	94.09	94.09	3.40	1.81	0.69
+25	Balusseri	Kozhikode	LDF	92.83	92.83	0.48	0.05	6.65
+26	Elathur	Kozhikode	LDF	99.68	99.68	0.01	0.24	0.07
+27	Kozhikode North	Kozhikode	LDF	90.08	90.08	8.30	0.96	0.66
+28	Kozhikode South	Kozhikode	LDF	81.20	81.20	17.71	0.37	0.72
+29	Beypore	Kozhikode	LDF	97.74	97.74	0.61	1.15	0.50
+30	Kunnamangalam	Kozhikode	LDF	59.77	59.77	27.57	7.31	5.35
+31	Koduvally	Kozhikode	UDF	96.39	0.00	96.39	3.61	0.00
+32	Thiruvambadi	Kozhikode	LDF	49.32	49.32	35.59	11.15	3.94
+33	Kondotty	Malappuram	UDF	99.99	0.00	99.99	0.00	0.00
+34	Eranad	Malappuram	UDF	99.99	0.00	99.99	0.00	0.01
+35	Nilambur	Malappuram	OTHERS	84.64	0.04	12.99	2.34	84.64
+36	Wandoor	Malappuram	UDF	99.98	0.00	99.98	0.00	0.01
+37	Manjeri	Malappuram	UDF	100.00	0.00	100.00	0.00	0.00
+38	Perinthalmanna	Malappuram	UDF	99.99	0.00	99.99	0.01	0.00
+39	Mankada	Malappuram	UDF	99.99	0.00	99.99	0.01	0.00
+40	Malappuram	Malappuram	UDF	99.91	0.00	99.91	0.00	0.09
+41	Vengara	Malappuram	UDF	99.96	0.00	99.96	0.00	0.04
+42	Vallikunnu	Malappuram	UDF	100.00	0.00	100.00	0.00	0.00
+43	Tirurangadi	Malappuram	UDF	99.99	0.00	99.99	0.00	0.00
+44	Tanur	Malappuram	UDF	67.68	3.77	67.68	0.15	28.40
+45	Tirur	Malappuram	UDF	99.99	0.00	99.99	0.01	0.00
+46	Kottakkal	Malappuram	UDF	100.00	0.00	100.00	0.00	0.00
+47	Thavanur	Malappuram	UDF	68.17	4.48	68.17	0.12	27.24
+48	Ponnani	Malappuram	LDF	64.94	64.94	22.47	0.24	12.35
+49	Thrithala	Palakkad	UDF	50.03	10.08	50.03	39.80	0.10
+50	Pattambi	Palakkad	LDF	95.41	95.41	0.35	4.19	0.05
+51	Shornur	Palakkad	LDF	99.92	99.92	0.02	0.06	0.00
+52	Ottappalam	Palakkad	LDF	95.20	95.20	0.62	4.12	0.06
+53	Kongad	Palakkad	LDF	99.81	99.81	0.16	0.02	0.00
+54	Mannarkkad	Palakkad	NDA	84.86	0.00	15.14	84.86	0.00
+55	Malampuzha	Palakkad	LDF	98.26	98.26	0.06	1.66	0.02
+56	Palakkad	Palakkad	NDA	84.70	0.00	15.30	84.70	0.00
+57	Tarur	Palakkad	LDF	99.73	99.73	0.24	0.03	0.00
+58	Chittur	Palakkad	LDF	99.83	99.83	0.03	0.13	0.01
+59	Nenmara	Palakkad	LDF	98.76	98.76	0.05	1.17	0.02
+60	Alathur	Palakkad	LDF	99.85	99.85	0.05	0.06	0.04
+61	Chelakkara	Thrissur	LDF	92.43	92.43	2.28	5.29	0.00
+62	Kunnamkulam	Thrissur	LDF	88.37	88.37	4.94	6.68	0.00
+63	Guruvayoor	Thrissur	UDF	61.22	30.14	61.22	8.61	0.04
+64	Manalur	Thrissur	LDF	89.99	89.99	3.43	6.58	0.00
+65	Wadakkanchery	Thrissur	UDF	76.28	12.57	76.28	11.11	0.04
+66	Ollur	Thrissur	LDF	64.07	64.07	28.75	7.16	0.02
+67	Thrissur	Thrissur	NDA	82.63	0.01	17.35	82.63	0.02
+68	Nattika	Thrissur	LDF	90.54	90.54	3.23	6.23	0.00
+69	Kaipamangalam	Thrissur	LDF	89.15	89.15	4.34	6.51	0.00
+70	Irinjalakuda	Thrissur	NDA	65.76	0.07	34.14	65.76	0.03
+71	Puthukkad	Thrissur	LDF	88.99	88.99	4.32	6.69	0.00
+72	Chalakudy	Thrissur	UDF	92.65	0.00	92.65	7.35	0.00
+73	Kodungallur	Thrissur	LDF	82.13	82.13	11.09	6.77	0.01
+74	Perumbavoor	Ernakulam	UDF	99.95	0.00	99.95	0.05	0.00
+75	Angamaly	Ernakulam	UDF	99.99	0.00	99.99	0.01	0.00
+76	Aluva	Ernakulam	UDF	100.00	0.00	100.00	0.00	0.00
+77	Kalamassery	Ernakulam	LDF	81.79	81.79	17.98	0.22	0.01
+78	Paravur	Ernakulam	UDF	100.00	0.00	100.00	0.00	0.00
+79	Vypin	Ernakulam	LDF	55.99	55.99	41.31	2.68	0.02
+80	Kochi	Ernakulam	LDF	73.83	73.83	24.97	1.18	0.01
+81	Thripunithura	Ernakulam	UDF	99.93	0.00	99.93	0.07	0.00
+82	Ernakulam	Ernakulam	UDF	99.94	0.00	99.94	0.06	0.00
+83	Thrikkakara	Ernakulam	UDF	99.99	0.00	99.99	0.01	0.00
+84	Kunnathunad	Ernakulam	UDF	65.90	27.09	65.90	6.97	0.04
+85	Piravom	Ernakulam	UDF	99.99	0.00	99.99	0.01	0.00
+86	Muvattupuzha	Ernakulam	UDF	99.97	0.00	99.97	0.03	0.00
+87	Kothamangalam	Ernakulam	LDF	53.66	53.66	44.26	2.07	0.02
+88	Devikulam	Idukki	UDF	94.14	2.44	94.14	1.09	2.33
+89	Udumbanchola	Idukki	LDF	76.34	76.34	21.25	2.39	0.03
+90	Thodupuzha	Idukki	UDF	96.09	0.00	96.09	3.91	0.00
+91	Idukki	Idukki	UDF	96.96	0.06	96.96	2.84	0.14
+92	Peerumede	Idukki	UDF	96.90	0.02	96.90	2.97	0.11
+93	Pala	Kottayam	UDF	86.30	13.44	86.30	0.14	0.12
+94	Kaduthuruthy	Kottayam	UDF	99.97	0.00	99.97	0.03	0.00
+95	Vaikom	Kottayam	LDF	92.26	92.26	6.41	0.64	0.69
+96	Ettumanoor	Kottayam	LDF	68.93	68.93	31.00	0.04	0.03
+97	Kottayam	Kottayam	UDF	99.99	0.00	99.99	0.01	0.00
+98	Puthuppally	Kottayam	UDF	99.98	0.00	99.98	0.02	0.00
+99	Changanassery	Kottayam	UDF	88.05	11.10	88.05	0.81	0.04
+100	Kanjirappally	Kottayam	UDF	87.64	12.08	87.64	0.19	0.10
+101	Poonjar	Kottayam	UDF	99.99	0.00	99.99	0.01	0.00
+102	Aroor	Alappuzha	UDF	55.48	43.91	55.48	0.56	0.06
+103	Cherthala	Alappuzha	UDF	59.55	39.59	59.55	0.78	0.07
+104	Alappuzha	Alappuzha	LDF	64.56	64.56	35.13	0.29	0.02
+105	Ambalappuzha	Alappuzha	LDF	70.70	70.70	28.98	0.30	0.02
+106	Kuttanad	Alappuzha	LDF	61.54	61.54	21.21	17.16	0.10
+107	Haripad	Alappuzha	UDF	93.91	0.02	93.91	6.08	0.00
+108	Kayamkulam	Alappuzha	UDF	57.97	41.29	57.97	0.68	0.06
+109	Mavelikkara	Alappuzha	LDF	97.95	97.95	1.70	0.01	0.34
+110	Chengannur	Alappuzha	LDF	90.94	90.94	3.74	1.23	4.08
+111	Thiruvalla	Pathanamthitta	OTHERS	49.86	33.72	15.44	0.99	49.86
+112	Ranni	Pathanamthitta	UDF	50.97	9.27	50.97	6.78	32.98
+113	Aranmula	Pathanamthitta	OTHERS	77.67	15.73	6.60	0.01	77.67
+114	Konni	Pathanamthitta	OTHERS	80.05	12.62	7.32	0.01	80.05
+115	Adoor	Pathanamthitta	UDF	92.79	0.00	92.79	7.15	0.05
+116	Karunagapally	Kollam	UDF	93.48	0.02	93.48	6.50	0.01
+117	Chavara	Kollam	UDF	84.13	10.53	84.13	5.04	0.30
+118	Kunnathur	Kollam	UDF	75.68	23.03	75.68	0.24	1.05
+119	Kottarakkara	Kollam	LDF	80.70	80.70	18.81	0.40	0.09
+120	Pathanapuram	Kollam	LDF	98.38	98.38	1.52	0.08	0.02
+121	Punalur	Kollam	LDF	99.96	99.96	0.03	0.00	0.00
+122	Chadayamangalam	Kollam	LDF	94.71	94.71	5.08	0.16	0.05
+123	Kundara	Kollam	UDF	92.97	0.01	92.97	7.02	0.00
+124	Kollam	Kollam	UDF	82.08	13.50	82.08	4.14	0.28
+125	Eravipuram	Kollam	LDF	99.84	99.84	0.13	0.03	0.00
+126	Chathannoor	Kollam	LDF	99.12	99.12	0.78	0.07	0.02
+127	Varkala	Thiruvananthapuram	LDF	94.76	94.76	2.58	2.65	0.00
+128	Attingal	Thiruvananthapuram	LDF	99.98	99.98	0.01	0.00	0.00
+129	Chirayinkeezhu	Thiruvananthapuram	LDF	99.26	99.26	0.41	0.32	0.01
+130	Nedumangad	Thiruvananthapuram	LDF	99.35	99.35	0.54	0.11	0.00
+131	Vamanapuram	Thiruvananthapuram	LDF	40.45	40.45	36.93	22.44	0.18
+132	Kazhakoottam	Thiruvananthapuram	LDF	96.76	96.76	1.81	1.43	0.00
+133	Vattiyoorkavu	Thiruvananthapuram	LDF	91.14	91.14	3.21	5.64	0.00
+134	Thiruvananthapuram	Thiruvananthapuram	NDA	82.61	2.08	15.30	82.61	0.01
+135	Nemom	Thiruvananthapuram	NDA	89.55	0.08	9.69	89.55	0.68
+136	Aruvikkara	Thiruvananthapuram	NDA	80.62	2.55	16.82	80.62	0.02
+137	Parassala	Thiruvananthapuram	LDF	99.58	99.58	0.36	0.06	0.00
+138	Kattakada	Thiruvananthapuram	LDF	98.04	98.04	1.32	0.64	0.00
+139	Kovalam	Thiruvananthapuram	UDF	80.08	0.01	80.08	19.90	0.00
+140	Neyyattinkara	Thiruvananthapuram	LDF	83.26	83.26	6.93	9.79	0.02
+

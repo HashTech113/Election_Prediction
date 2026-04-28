@@ -88,6 +88,29 @@ export const PREDICTION_LEVEL_LABELS: Record<PredictionLevel, string> = {
   live_intelligence_score: "Live Intelligence Score",
 };
 
+// ---- Per-lens summary (sent by GET /api/predictions/lens) ----------------
+
+export type LensName =
+  | "historical_projection"
+  | "long_term_trend"
+  | "recent_swing"
+  | "final_prediction";
+
+export type LensSummary = {
+  lens: LensName;
+  label: string;
+  total_constituencies: number;
+  valid_winner_rows: number;
+  seat_counts: SeatCounts;
+  projected_winner: Party | "N/A";
+  average_score: number | null;
+  data_reference: string;
+  source_file: string;
+  rejected_winner_rows: number;
+  rejected_winner_sample: string[];
+  rows: PredictionRow[];
+};
+
 // ---- Projection summary tabs (UI-only; not sent to backend) --------------
 
 export type ProjectionTab =
@@ -129,20 +152,28 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     label: "Historical Projection",
     totalConstituencies: 140,
     dataReference: "2011 – 2026",
-    projectedWinner: "N/A",
+    projectedWinner: "N/A — Data under validation",
     averageWinningScore: null,
     interpretation:
-      "Cannot calculate from available data. Pre-result intelligence, not official election result.",
+      "2011 Assembly and 2014 Lok Sabha AC-segment data are not present in the " +
+      "uploaded dataset, and 2016 constituency-level labels are currently under " +
+      "validation. This lens cannot be computed until those gaps are filled. " +
+      "Pre-result intelligence, not official election result.",
   },
   long_term_trend: {
     tab: "long_term_trend",
     label: "Long-Term Trend",
     totalConstituencies: 140,
     dataReference: "2014 – 2026",
-    projectedWinner: "LDF",
-    averageWinningScore: 0.4528,
+    projectedWinner: "N/A — Data under validation",
+    averageWinningScore: null,
     interpretation:
-      "Strong LDF dominance across two consecutive assembly elections. Pre-result intelligence, not official election result.",
+      "Long-Term Trend depends on 2016 constituency-level results, which are " +
+      "currently under validation (state total = 91 LDF / 47 UDF / 1 NDA / 1 OTHERS, " +
+      "but the per-constituency labels in kerala_assembly_2026.csv currently sum to " +
+      "78 LDF / 61 UDF / 1 NDA — a 13-seat gap). This lens is intentionally suppressed " +
+      "until the per-AC labels are reconciled against the ECI 2016 archive. " +
+      "Pre-result intelligence, not official election result.",
   },
   recent_swing: {
     tab: "recent_swing",

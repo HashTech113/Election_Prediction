@@ -8,14 +8,15 @@ import {
   EXPECTED_API_VERSION,
   EXPECTED_PREDICTIONS_SHA256,
   fetchHealth,
-  fetchPredictions,
+  fetchLensSummary,
   fetchPredictionsMeta,
 } from "./services/api";
 import {
+  LensName,
+  LensSummary,
   PredictionRow,
   Party,
   PredictionsMeta,
-  ProjectionSummary,
 } from "./types/prediction";
 import { asPercentPrecise, asPercentSmart, asSeatPercent } from "./utils/format";
 
@@ -119,7 +120,17 @@ function validatePredictionMeta(meta: PredictionsMeta): MetaValidationResult {
 }
 
 export function KeralaApp() {
-  const [rows, setRows] = useState<PredictionRow[]>([]);
+  // ── Active analysis lens (drives KPI tile + constituency table + bars) ──
+  // Each tab maps to a different pre-built CSV on the backend, so the
+  // entire dashboard swaps when the user changes tabs (mirrors TN behaviour).
+  const [activeLens, setActiveLens] = useState<LensName>("historical_projection");
+  const [lensSummaryByName, setLensSummaryByName] = useState<
+    Partial<Record<LensName, LensSummary>>
+  >({});
+
+  const activeSummary = lensSummaryByName[activeLens];
+  const rows: PredictionRow[] = activeSummary?.rows ?? [];
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
@@ -132,8 +143,16 @@ export function KeralaApp() {
   const prefersReducedMotion = useReducedMotion();
   const deferredQuery = useDeferredValue(query);
 
+  // ── Initial load: health + meta validation, plus all 4 lens datasets in parallel.
+  // Per-lens datasets are cached in lensSummaryByName so tab switches are instant.
   useEffect(() => {
     const controller = new AbortController();
+    const LENS_NAMES: LensName[] = [
+      "historical_projection",
+      "long_term_trend",
+      "recent_swing",
+      "final_prediction",
+    ];
 
     async function load() {
       setLoading(true);
@@ -145,31 +164,33 @@ export function KeralaApp() {
         if (health.status !== "ok") {
           throw new Error(health.error || "Backend health check failed.");
         }
-
         let meta = health.meta;
         if (!meta) {
           meta = await fetchPredictionsMeta(controller.signal);
         }
-
         const validation = validatePredictionMeta(meta);
-        if (validation.warning) {
-          setWarning(validation.warning);
-        }
-        if (validation.error) {
-          throw new Error(validation.error);
-        }
+        if (validation.warning) setWarning(validation.warning);
+        if (validation.error) throw new Error(validation.error);
 
-        const predictions = await fetchPredictions(controller.signal);
+        const lensResults = await Promise.all(
+          LENS_NAMES.map((name) =>
+            fetchLensSummary(name, controller.signal).then(
+              (s) => [name, s] as const,
+              (err) => {
+                console.error(`[KeralaApp] lens '${name}' failed:`, err);
+                return null;
+              },
+            ),
+          ),
+        );
         if (controller.signal.aborted) return;
 
-        const fetchedSeatCounts = getSeatCounts(predictions);
-        if (!seatCountsMatch(fetchedSeatCounts, meta.seat_counts)) {
-          throw new Error(
-            `Backend metadata and predictions differ. Meta seats: ${toCountsLine(meta.seat_counts)}. Payload seats: ${toCountsLine(fetchedSeatCounts)}.`
-          );
+        const next: Partial<Record<LensName, LensSummary>> = {};
+        for (const r of lensResults) if (r) next[r[0]] = r[1];
+        if (Object.keys(next).length === 0) {
+          throw new Error("No lens datasets could be loaded from the backend.");
         }
-
-        setRows(predictions);
+        setLensSummaryByName(next);
       } catch (err) {
         if (
           controller.signal.aborted ||
@@ -181,16 +202,12 @@ export function KeralaApp() {
         const message = err instanceof Error ? err.message : "Unknown error";
         setError(`${message} Ensure backend is running on ${API_BASE}.`);
       } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
+        if (!controller.signal.aborted) setLoading(false);
       }
     }
 
     void load();
-    return () => {
-      controller.abort();
-    };
+    return () => controller.abort();
   }, []);
 
   const districts = useMemo(() => {
@@ -213,44 +230,24 @@ export function KeralaApp() {
   }, [rows, district, party, deferredQuery]);
 
   const seatCounts = useMemo(() => getSeatCounts(filteredRows), [filteredRows]);
-  const totalSeatCounts = useMemo(() => getSeatCounts(rows), [rows]);
 
-  // Live summary for AnalysisHero's "Live Intelligence Score" tab.
-  // Computed from API rows so KPI ↔ constituency view never desync.
-  // Aggregation rule: count of constituencies whose `predicted` matches each
-  // party (NEVER sum probabilities or average raw scores).
-  const liveSummary = useMemo<ProjectionSummary | undefined>(() => {
-    if (rows.length === 0) return undefined;
-    const winnerParty = (Object.keys(totalSeatCounts) as Party[]).reduce(
-      (best, p) =>
-        totalSeatCounts[p] > totalSeatCounts[best] ? p : best,
-      "LDF" as Party,
-    );
-    const avgWinningScore =
-      rows.reduce((sum, r) => sum + r.confidence, 0) / rows.length;
-    return {
-      tab: "live_intelligence_score",
-      label: "Live Intelligence Score",
-      totalConstituencies: rows.length,
-      dataReference: "Live Data",
-      projectedWinner: totalSeatCounts[winnerParty] > 0 ? winnerParty : "N/A",
-      averageWinningScore: avgWinningScore,
-      interpretation:
-        `Live model output: LDF ${totalSeatCounts.LDF}, UDF ${totalSeatCounts.UDF}, ` +
-        `NDA ${totalSeatCounts.NDA}, OTHERS ${totalSeatCounts.OTHERS}. ` +
-        "Pre-result intelligence, not official election result.",
-    };
-  }, [rows, totalSeatCounts]);
-  // Hide parties that win zero seats in the active scenario (e.g. OTHERS = 0
-  // under VoteVibe). Falls back to a fixed default order for parties that
-  // remain on screen.
-  const displayParties = useMemo<Party[]>(() => {
-    const ordered: Party[] = ["LDF", "UDF", "NDA", "OTHERS"];
-    return ordered.filter((p) => totalSeatCounts[p] > 0);
-  }, [totalSeatCounts]);
+  // The "Seat Distribution" bar list below uses `seatCounts` derived from the
+  // active /api/predictions rows (count-of-winners over `predicted`). The 4
+  // hero KPI tabs each fetch their own /api/predictions/lens summary from
+  // AnalysisHero, so per-tab seat distributions vary visibly.
+  // Always show LDF / UDF / NDA / OTHERS — even when a lens scores zero seats
+  // for some of them. Matches Tamil Nadu's behaviour, which keeps all 5
+  // alliance bars on screen regardless of count.
+  const displayParties: Party[] = ["LDF", "UDF", "NDA", "OTHERS"];
   const sortedParties = useMemo(() => {
-    return [...displayParties].sort((a, b) => seatCounts[b] - seatCounts[a]);
-  }, [seatCounts, displayParties]);
+    // Sort by seat count desc, but pin OTHERS to the last position so the
+    // visual ordering stays consistent across tabs (mirrors TN).
+    return [...displayParties].sort((a, b) => {
+      if (a === "OTHERS") return 1;
+      if (b === "OTHERS") return -1;
+      return seatCounts[b] - seatCounts[a];
+    });
+  }, [seatCounts]);
   const total = filteredRows.length;
   const safeTotal = total || 1;
   const highMarginSeats = useMemo(() => {
@@ -320,7 +317,11 @@ export function KeralaApp() {
       <div className="bg-blur bg-blur-b" />
 
       <main className="container">
-        <AnalysisHero liveOverride={liveSummary} />
+        <AnalysisHero
+          activeLens={activeLens}
+          onLensChange={setActiveLens}
+          summaries={lensSummaryByName}
+        />
 
         {error && <div className="error-banner">{error}</div>}
         {!error && warning && <div className="warning-banner">{warning}</div>}

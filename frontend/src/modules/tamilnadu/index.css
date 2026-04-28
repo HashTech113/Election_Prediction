@@ -1455,7 +1455,14 @@ tbody tr:hover {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Legacy Edge/IE */
+}
+
+.compact-table-wrap::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .compact-table {

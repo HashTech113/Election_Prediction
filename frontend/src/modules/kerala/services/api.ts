@@ -1,6 +1,8 @@
 import {
   HealthResponse,
   KeralaScenarioResponse,
+  LensName,
+  LensSummary,
   PredictionLevel,
   PredictionRow,
   PredictionsMeta,
@@ -346,6 +348,32 @@ export async function fetchKeralaScenario(
   }
 
   return (await response.json()) as KeralaScenarioResponse;
+}
+
+/**
+ * Fetch a per-lens summary (Historical Projection / Long-Term Trend /
+ * Recent Swing / Final Prediction). Each lens reads its own pre-built CSV
+ * on the backend, so each call returns a distinct seat-count distribution.
+ */
+export async function fetchLensSummary(
+  lens: LensName,
+  signal?: AbortSignal,
+): Promise<LensSummary> {
+  const path = `/api/predictions/lens?name=${encodeURIComponent(lens)}`;
+  const response = await fetchWithApiFallback(path, { signal, cache: "no-store" });
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error(
+        `Lens '${lens}' source CSV is missing on the backend. ` +
+          "Run `python backend/kerala/generate_scores.py` and " +
+          "`python backend/kerala/build_historical_trend_swing.py` to (re)build it.",
+      );
+    }
+    throw new Error(
+      `Failed to load lens '${lens}' (${response.status} ${response.statusText}) from ${API_BASE}`,
+    );
+  }
+  return (await response.json()) as LensSummary;
 }
 
 export { API_BASE };

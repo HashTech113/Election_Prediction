@@ -440,7 +440,7 @@ function SentimentScoresCard({ meta }: { meta: AnalysisMeta }) {
             <th title="Social-media sentiment">Social</th>
             <th title="News-media sentiment">News</th>
             <th title="Local issues / governance sentiment">Issues</th>
-            <th title="Predicted vote strength: weighted blend of the columns to the left (leader and social-media signals carry the most weight, followed by news, party, candidate, and local-issue sentiment)">Vote Strength</th>
+            <th title="Predicted vote strength: weighted blend of the columns to the left (leader and social-media signals carry the most weight, followed by news, party, candidate, and local-issue sentiment)">Vote</th>
           </tr>
         </thead>
         <tbody>

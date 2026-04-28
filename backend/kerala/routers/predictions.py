@@ -14,6 +14,7 @@ from schemas import ErrorResponse, KeralaScenarioResponse, PredictionRow, Predic
 from services import (
     ACTIVE_PREDICTION_SCENARIO,
     API_VERSION,
+    LENS_NAMES,
     NO_STORE_HEADERS,
     PREDICTION_LEVELS,
     SCENARIO_KEYS,
@@ -21,6 +22,7 @@ from services import (
     ScenarioSeatValidationError,
     build_kerala_scenario,
     build_kerala_summary,
+    build_lens_summary,
     build_predictions_meta,
     file_sha256,
     iso_mtime_utc,
@@ -236,3 +238,44 @@ def kerala_scenarios() -> JSONResponse:
         },
         headers=NO_STORE_HEADERS,
     )
+
+
+@router.get(
+    "/lens",
+    responses={
+        400: {"model": ErrorResponse},
+        404: {"model": ErrorResponse},
+        500: {"model": ErrorResponse},
+    },
+    summary="Per-lens seat-count summary (Historical / Long-Term / Recent / Final)",
+    description=(
+        "Returns a per-lens aggregation read directly from its pre-built CSV. "
+        "Each lens produces distinct seat counts — Long-Term Trend reflects "
+        "2014–2021 trajectories, Recent Swing reflects 2019→2024 LS shifts, "
+        "Final Prediction is a weighted blend of trend + swing + live."
+    ),
+)
+def kerala_lens(
+    name: str = Query(
+        "final_prediction",
+        description="Lens name",
+        enum=list(LENS_NAMES),
+    ),
+) -> JSONResponse:
+    try:
+        payload = build_lens_summary(name)
+    except ValueError as exc:
+        return JSONResponse(
+            status_code=400, content={"error": str(exc)}, headers=NO_STORE_HEADERS,
+        )
+    except FileNotFoundError as exc:
+        return JSONResponse(
+            status_code=404, content={"error": str(exc)}, headers=NO_STORE_HEADERS,
+        )
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"error": f"Unexpected server error: {exc}"},
+            headers=NO_STORE_HEADERS,
+        )
+    return JSONResponse(content=payload, headers=NO_STORE_HEADERS)
