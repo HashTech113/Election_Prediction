@@ -1,0 +1,14 @@
+{
+  "name": "election-prediction",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo: React + Vite frontend + Kerala (FastAPI) and Tamil Nadu (stdlib HTTP) backends.",
+  "scripts": {
+    "dev": "bash scripts/dev.sh",
+    "dev:kerala": "bash -c 'cd backend/kerala && PORT=8001 HOST=0.0.0.0 uvicorn main:app --reload --host 0.0.0.0 --port 8001'",
+    "dev:tamilnadu": "bash -c 'cd backend/tamilnadu && PORT=8002 HOST=0.0.0.0 python server.py'",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview"
+  }
+}

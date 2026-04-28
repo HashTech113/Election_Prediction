@@ -1,8 +1,18 @@
 import { useMemo, useState } from "react";
-import { PROJECTION_SUMMARIES, ProjectionTab } from "../types/prediction";
+import {
+  PROJECTION_SUMMARIES,
+  ProjectionSummary,
+  ProjectionTab,
+} from "../types/prediction";
 import { asPercent } from "../utils/format";
 
 type TabId = "historical" | "long_term" | "recent_swing" | "live_score";
+
+interface AnalysisHeroProps {
+  /** Live override for the "Live Intelligence Score" tab. When provided,
+   *  it replaces the hardcoded fixture so the KPI reflects current API data. */
+  liveOverride?: ProjectionSummary;
+}
 
 const TABS: Array<{ id: TabId; label: string }> = [
   {
@@ -24,10 +34,13 @@ const TAB_TO_PROJECTION: Record<TabId, ProjectionTab> = {
   live_score: "live_intelligence_score",
 };
 
-export function AnalysisHero() {
+export function AnalysisHero({ liveOverride }: AnalysisHeroProps = {}) {
   const [activeTab, setActiveTab] = useState<TabId>("historical");
   const activeProjection = TAB_TO_PROJECTION[activeTab];
-  const summary = PROJECTION_SUMMARIES[activeProjection];
+  const summary =
+    activeProjection === "live_intelligence_score" && liveOverride
+      ? liveOverride
+      : PROJECTION_SUMMARIES[activeProjection];
 
   const kpi = useMemo(
     () => [

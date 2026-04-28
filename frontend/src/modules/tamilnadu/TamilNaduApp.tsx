@@ -301,8 +301,8 @@ export function TamilNaduApp() {
           <div className="hero-inner">
             <div className="brand-line" aria-label="QVotelytics">
               <img
-                src="/assets/owlytics"
-                alt="Q logo"
+                src="/assets/owlytics.png"
+                alt="Owlytics logo"
                 className="q-logo"
                 width={56}
                 height={56}

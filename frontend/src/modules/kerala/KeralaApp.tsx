@@ -15,6 +15,7 @@ import {
   PredictionRow,
   Party,
   PredictionsMeta,
+  ProjectionSummary,
 } from "./types/prediction";
 import { asPercentPrecise, asPercentSmart, asSeatPercent } from "./utils/format";
 
@@ -213,6 +214,33 @@ export function KeralaApp() {
 
   const seatCounts = useMemo(() => getSeatCounts(filteredRows), [filteredRows]);
   const totalSeatCounts = useMemo(() => getSeatCounts(rows), [rows]);
+
+  // Live summary for AnalysisHero's "Live Intelligence Score" tab.
+  // Computed from API rows so KPI ↔ constituency view never desync.
+  // Aggregation rule: count of constituencies whose `predicted` matches each
+  // party (NEVER sum probabilities or average raw scores).
+  const liveSummary = useMemo<ProjectionSummary | undefined>(() => {
+    if (rows.length === 0) return undefined;
+    const winnerParty = (Object.keys(totalSeatCounts) as Party[]).reduce(
+      (best, p) =>
+        totalSeatCounts[p] > totalSeatCounts[best] ? p : best,
+      "LDF" as Party,
+    );
+    const avgWinningScore =
+      rows.reduce((sum, r) => sum + r.confidence, 0) / rows.length;
+    return {
+      tab: "live_intelligence_score",
+      label: "Live Intelligence Score",
+      totalConstituencies: rows.length,
+      dataReference: "Live Data",
+      projectedWinner: totalSeatCounts[winnerParty] > 0 ? winnerParty : "N/A",
+      averageWinningScore: avgWinningScore,
+      interpretation:
+        `Live model output: LDF ${totalSeatCounts.LDF}, UDF ${totalSeatCounts.UDF}, ` +
+        `NDA ${totalSeatCounts.NDA}, OTHERS ${totalSeatCounts.OTHERS}. ` +
+        "Pre-result intelligence, not official election result.",
+    };
+  }, [rows, totalSeatCounts]);
   // Hide parties that win zero seats in the active scenario (e.g. OTHERS = 0
   // under VoteVibe). Falls back to a fixed default order for parties that
   // remain on screen.
@@ -292,7 +320,7 @@ export function KeralaApp() {
       <div className="bg-blur bg-blur-b" />
 
       <main className="container">
-        <AnalysisHero />
+        <AnalysisHero liveOverride={liveSummary} />
 
         {error && <div className="error-banner">{error}</div>}
         {!error && warning && <div className="warning-banner">{warning}</div>}

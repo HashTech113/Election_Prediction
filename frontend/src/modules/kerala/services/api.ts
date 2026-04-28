@@ -246,6 +246,12 @@ export async function fetchHealth(signal?: AbortSignal): Promise<HealthResponse>
     return body;
   } catch (error) {
     console.error("[API] Health check error:", error);
+    if (error instanceof TypeError) {
+      return {
+        status: "error",
+        error: `Cannot reach Kerala API at ${API_BASE}. Is the backend running?`,
+      };
+    }
     return {
       status: "error",
       error: error instanceof Error ? error.message : "Health check request failed.",
@@ -295,10 +301,18 @@ export async function fetchPredictions(signal?: AbortSignal): Promise<Prediction
     return data;
   } catch (error) {
     if (error instanceof TypeError) {
+      // Browser fetch surfaces network-level failures (DNS / TCP refused /
+      // CORS preflight blocked) as a generic TypeError("Failed to fetch").
+      // Replace it with a clear, actionable message so the UI banner tells
+      // the user exactly what's wrong.
       console.error(
         "[API] Network error - unable to reach backend at",
         API_BASE,
         error
+      );
+      throw new Error(
+        `Cannot reach Kerala API at ${API_BASE}. Is the backend running on ${API_BASE}? ` +
+          "Start it with `npm run dev` (or `npm run dev:kerala`) and check that no firewall/CORS rule blocks the request."
       );
     }
     throw error;
