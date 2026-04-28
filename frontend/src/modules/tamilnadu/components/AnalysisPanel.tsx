@@ -59,6 +59,10 @@ function buildHeaderSummary(meta: AnalysisMeta, rows: AnalysisPredictionRow[]): 
   let dataReference: string;
   if (meta.analysis_type === "live_intelligence_score") {
     dataReference = "LIVE DATA";
+  } else if (meta.analysis_type === "recent_swing") {
+    // Recent Swing measures movement since the last assembly election (2021),
+    // even though the freshest LS reference is 2024. Anchor the label to 2021.
+    dataReference = `2021 - ${meta.cm_election_year}`;
   } else {
     const refYears = meta.lok_sabha_reference_years;
     const earliest = refYears.length > 0 ? Math.min(...refYears) : meta.cm_election_year;

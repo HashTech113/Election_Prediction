@@ -295,7 +295,7 @@ def _build_projection_summary(
     rs_row = [
         "Recent Swing [2021-2024]",
         n_ac,
-        "2024 – 2026",
+        "2021 – 2026",
         rs_winner or "N/A",
         round(rs_share, 2) if rs_winner else "",
         (

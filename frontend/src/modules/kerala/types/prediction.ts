@@ -179,7 +179,7 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     tab: "recent_swing",
     label: "Recent Swing",
     totalConstituencies: 140,
-    dataReference: "2024 – 2026",
+    dataReference: "2021 – 2026",
     projectedWinner: "UDF",
     averageWinningScore: 0.454,
     interpretation:

@@ -65,7 +65,7 @@ LENS_SOURCES: dict[str, dict] = {
         "file": "kerala_2026_recent_swing_sheet.csv",
         "winner_col": "analysis_predicted",
         "score_col": "recent_swing_score",
-        "data_reference": "2024 – 2026",
+        "data_reference": "2021 – 2026",
         "label": "Recent Swing",
     },
     "final_prediction": {
