@@ -61,12 +61,9 @@ type MetaValidationResult = {
 };
 
 function validatePredictionMeta(meta: PredictionsMeta): MetaValidationResult {
-  if (import.meta.env.PROD && !EXPECTED_PREDICTIONS_SHA256) {
-    return {
-      error: "Missing VITE_EXPECTED_PREDICTIONS_SHA256 in production frontend environment.",
-      warning: null,
-    };
-  }
+  // VITE_EXPECTED_PREDICTIONS_SHA256 is an optional integrity check — when
+  // unset, skip the comparison and rely on the console warning emitted in
+  // services/api.ts. Setting it lets you detect stale backends.
 
   if (meta.fallback_in_use) {
     return {

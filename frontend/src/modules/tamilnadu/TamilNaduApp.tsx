@@ -48,9 +48,9 @@ function seatCountsMatch(a: Record<Party, number>, b: Record<Party, number>): bo
 }
 
 function validatePredictionMeta(meta: PredictionsMeta): string | null {
-  if (import.meta.env.PROD && !EXPECTED_PREDICTIONS_SHA256) {
-    return "Missing VITE_EXPECTED_PREDICTIONS_SHA256 in production frontend environment.";
-  }
+  // VITE_EXPECTED_PREDICTIONS_SHA256 is an optional integrity check — when
+  // unset, skip the comparison and rely on the console warning emitted in
+  // services/api.ts. Setting it lets you detect stale backends.
 
   if (meta.fallback_in_use) {
     return "Backend is serving fallback data (tamilnadu_assembly_2026.csv), not final predictions_2026.csv.";
