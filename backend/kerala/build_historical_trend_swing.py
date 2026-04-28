@@ -1,12 +1,11 @@
 """Build the Kerala constituency-level actual historical trend / swing dataset.
 
 Reads the real fields available in:
-    backend/data_files/kerala_constituency_master_2026.csv
-    backend/data_files/kerala_assembly_2026.csv
+    backend/kerala/data/csv/kerala_constituency_master_2026.csv
+    backend/kerala/data/csv/kerala_assembly_2026.csv
 
 Writes:
-    backend/data_files/kerala_actual_historical_trend_swing_constituencies.csv
-    backend/data_files/kerala_actual_historical_trend_swing_constituencies.xlsx
+    backend/kerala/data/csv/kerala_actual_historical_trend_swing_constituencies.csv
 
 This script intentionally:
     * does NOT use proj_2026_* columns or any 2026 projection fields
@@ -28,7 +27,6 @@ DATA_DIR = ROOT / "data" / "csv"
 MASTER_FILE = DATA_DIR / "kerala_constituency_master_2026.csv"
 ASSEMBLY_FILE = DATA_DIR / "kerala_assembly_2026.csv"
 OUT_CSV = DATA_DIR / "kerala_actual_historical_trend_swing_constituencies.csv"
-OUT_XLSX = DATA_DIR / "kerala_actual_historical_trend_swing_constituencies.xlsx"
 
 UNAVAILABLE_VALUE = "Not available in uploaded dataset"
 UNAVAILABLE_TREND = "Cannot calculate from uploaded dataset"
@@ -52,18 +50,6 @@ OUTPUT_COLUMNS = [
     "2024 NDA Vote Share (%)",
     "Recent Swing [2021-2024]",
 ]
-
-NOTES_TEXT = (
-    "This workbook contains actual historical fields available in the uploaded "
-    "Kerala dataset only.\n"
-    "It excludes 2026 projection fields.\n"
-    "2011 Assembly and 2014 Lok Sabha assembly-segment actual winner fields are "
-    "not present in the uploaded dataset.\n"
-    "Those values are marked as unavailable instead of being guessed.\n"
-    "Long-Term Trend [2014-2021] is built using winner_2016 and winner_2021.\n"
-    "Recent Swing [2021-2024] is built using winner_2021 and ls2024_winner."
-)
-
 
 def _read_csv(path: Path) -> list[dict]:
     with path.open("r", encoding="utf-8-sig", newline="") as fp:
@@ -227,67 +213,6 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(output_rows)
     print(f"[build_hts] wrote {OUT_CSV.relative_to(ROOT.parent)}  ({OUT_CSV.stat().st_size:,} bytes)")
-
-    # ---------------- write XLSX ----------------
-    try:
-        from openpyxl import Workbook
-        from openpyxl.styles import Alignment, Font, PatternFill
-        from openpyxl.utils import get_column_letter
-    except ImportError:
-        print("[build_hts] openpyxl not available — skipping XLSX. CSV is ready.")
-        return
-
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Constituencies"
-
-    # Header
-    ws.append(OUTPUT_COLUMNS)
-    for col_idx, _ in enumerate(OUTPUT_COLUMNS, start=1):
-        cell = ws.cell(row=1, column=col_idx)
-        cell.font = Font(bold=True, color="FFFFFF")
-        cell.fill = PatternFill("solid", fgColor="1F2937")
-        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
-
-    # Data
-    for r in output_rows:
-        ws.append([r[col] for col in OUTPUT_COLUMNS])
-
-    # Column widths (rough autosize)
-    width_overrides = {
-        "ac_no": 7,
-        "constituency": 22,
-        "district": 16,
-        "region_5way": 11,
-        "reservation": 12,
-        "2011 Assembly Actual Winner": 32,
-        "2014 Lok Sabha AC/Segment Actual Winner": 38,
-        "Historical Projection [2011-2014]": 34,
-        "2016 Assembly Actual Winner": 16,
-        "2021 Assembly Actual Winner": 16,
-        "Long-Term Trend [2014-2021]": 22,
-        "2021 Assembly Actual Winner For Swing": 22,
-        "2024 Lok Sabha Actual Winner": 18,
-        "2024 UDF Vote Share (%)": 13,
-        "2024 LDF Vote Share (%)": 13,
-        "2024 NDA Vote Share (%)": 13,
-        "Recent Swing [2021-2024]": 22,
-    }
-    for col_idx, col in enumerate(OUTPUT_COLUMNS, start=1):
-        ws.column_dimensions[get_column_letter(col_idx)].width = width_overrides.get(col, 14)
-    ws.row_dimensions[1].height = 36
-    ws.freeze_panes = "B2"
-
-    # Notes sheet
-    notes_ws = wb.create_sheet(title="Notes")
-    notes_ws.column_dimensions["A"].width = 110
-    for line in NOTES_TEXT.split("\n"):
-        notes_ws.append([line])
-    for cell in notes_ws["A"]:
-        cell.alignment = Alignment(wrap_text=True, vertical="top")
-
-    wb.save(OUT_XLSX)
-    print(f"[build_hts] wrote {OUT_XLSX.relative_to(ROOT.parent)}  ({OUT_XLSX.stat().st_size:,} bytes)")
 
     # ---------------- summary ----------------
     print()
