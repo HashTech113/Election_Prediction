@@ -272,6 +272,7 @@ body,
 
 .l-state-name {
   margin: 0;
+  text-align: left;
   font-family: var(--section-heading-font);
   font-size: clamp(1.5rem, 1.6vw + 0.5rem, 2rem);
   font-weight: 700;
@@ -296,6 +297,11 @@ body,
   font-size: 0.95rem;
   line-height: 1.55;
   color: var(--ink);
+}
+
+.l-state-desc strong {
+  color: #2f3a73;
+  font-weight: 600;
 }
 
 .l-state-cta {

@@ -38,7 +38,7 @@ ASSEMBLY_FILE = DATA_DIR / "kerala_assembly_2026.csv"
 PARTIES: tuple[str, ...] = ("LDF", "UDF", "NDA", "OTHERS")
 
 LT_WEIGHTS = {"win_2021": 0.5, "ls2024": 0.3, "win_2016": 0.2}
-RS_WEIGHTS = {"ls2024": 0.7, "lb2025": 0.3}
+RS_WEIGHTS = {"ls2024": 0.6, "lb2025": 0.3, "per_ac_2021": 0.1}
 FINAL_WEIGHTS = {"long_term": 0.40, "recent_swing": 0.35, "live_intel": 0.25}
 
 CAVEATS = (
@@ -125,6 +125,33 @@ def _proj_2026_share(row: dict, party: str) -> float:
     return _clamp01(_f(row.get(f"proj_2026_{party.lower()}_pct")))
 
 
+def _per_ac_2021_factor(row: dict, party: str) -> float:
+    """Per-constituency factor derived from real 2021 per-AC fields.
+
+    Uses winner_2021 + runner_up_2021 + vote_share_2021 + margin_pct_2021,
+    all of which vary per AC (136/140 unique margins, 134/140 unique vote
+    shares). Adding a small weighted slice of this to the swing scores
+    breaks the LS-granularity tie problem (where ~7 ACs sharing one parent
+    Lok Sabha constituency get identical LS2024+LB2025 scores).
+
+    Per-party allocation per AC:
+      winner_2021 party    → vote_share_2021               (e.g. ~0.55)
+      runner_up_2021 party → vote_share_2021 - margin       (e.g. ~0.43)
+      remaining 2 parties  → split residual mass            (small)
+    """
+    winner = (row.get("winner_2021", "") or "").strip()
+    runner = (row.get("runner_up_2021", "") or "").strip()
+    vs = _clamp01(_f(row.get("vote_share_2021")))
+    margin = _clamp01(_f(row.get("margin_pct_2021")))
+    if party == winner:
+        return vs
+    if party == runner:
+        return _clamp01(vs - margin)
+    runner_share = max(0.0, vs - margin)
+    residual = max(0.0, 1.0 - vs - runner_share)
+    return residual / 2.0
+
+
 # ------------------------------------------------------- scoring lenses
 
 def long_term_scores(row: dict) -> dict[str, float]:
@@ -144,6 +171,7 @@ def recent_swing_scores(row: dict) -> dict[str, float]:
         p: (
             RS_WEIGHTS["ls2024"] * _ls2024_share(row, p)
             + RS_WEIGHTS["lb2025"] * _lb2025_share(row, p)
+            + RS_WEIGHTS["per_ac_2021"] * _per_ac_2021_factor(row, p)
         )
         for p in PARTIES
     }

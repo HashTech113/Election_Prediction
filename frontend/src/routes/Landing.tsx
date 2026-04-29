@@ -90,9 +90,9 @@ export function Landing() {
               <h2 className="l-state-name">Tamil Nadu</h2>
               <p className="l-state-meta">234 Constituencies · 38 Districts</p>
               <p className="l-state-desc">
-                DMK Alliance, AIADMK+NDA, TVK, NTK, Others — historical
-                projections plus long-term trend, recent swing &amp; live
-                intelligence views.
+                <strong>DMK Alliance, AIADMK+NDA, TVK, NTK</strong> — AI-driven constituency
+                projections for Tamil Nadu with historical trends, voter swings, and real-time
+                insights.
               </p>
               <span className="l-state-cta">
                 Open Tamil Nadu Dashboard
@@ -112,8 +112,8 @@ export function Landing() {
               <h2 className="l-state-name">Kerala</h2>
               <p className="l-state-meta">140 Constituencies · 14 Districts</p>
               <p className="l-state-desc">
-                LDF, UDF, NDA, Others — model-driven 2026 projections with
-                scenario overlays for alternative vote-shift outcomes.
+                <strong>LDF, UDF, NDA</strong> — AI-driven constituency projections for Kerala
+                with historical trends, voter swings, and real-time insights.
               </p>
               <span className="l-state-cta">
                 Open Kerala Dashboard
