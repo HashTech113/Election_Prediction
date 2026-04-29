@@ -184,8 +184,8 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     totalConstituencies: 140,
     dataReference: "LIVE DATA",
     projectedWinner: "LDF",
-    averageWinningScore: 0.5773,
+    averageWinningScore: 0.5436,
     interpretation:
-      "Blended 0.40·long-term + 0.35·recent-swing + 0.25·live-intelligence. Pre-result intelligence, not official election result.",
+      "Blended 0.30·long-term + 0.40·recent-swing + 0.30·live-intelligence. Pre-result intelligence, not official election result.",
   },
 };
