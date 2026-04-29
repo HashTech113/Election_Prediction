@@ -1322,6 +1322,61 @@ tbody tr:hover {
     padding: 0.5rem;
     font-size: 0.82rem;
   }
+
+  .ep-tab {
+    padding: 8px 14px;
+    font-size: 0.86rem;
+    letter-spacing: 0.06em;
+  }
+
+  .ep-tabs {
+    gap: 6px;
+    padding: 6px;
+    margin: 12px auto 18px;
+  }
+
+  .center-card {
+    padding: 0.75rem;
+  }
+
+  .inner-block {
+    padding: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-card strong,
+  .ep-kpi-item strong {
+    font-size: 1.4rem;
+  }
+
+  .kpi-card h3,
+  .ep-kpi-item h3 {
+    font-size: 0.86rem;
+  }
+
+  .ep-tab {
+    padding: 7px 12px;
+    font-size: 0.8rem;
+  }
+
+  .ep-hero {
+    padding: 0.5rem 0.1rem 0.2rem;
+  }
+
+  .ep-brand h1 {
+    font-size: clamp(1.6rem, 6vw, 2rem);
+  }
+
+  .ep-hero p {
+    font-size: 0.92rem;
+    line-height: 1.4;
+  }
+
+  th,
+  td {
+    padding: 0.4rem 0.45rem;
+  }
 }
 
 @keyframes winnerRollText {

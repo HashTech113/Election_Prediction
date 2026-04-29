@@ -22,6 +22,7 @@ import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 
 from routers import health, predictions
@@ -50,6 +51,8 @@ app = FastAPI(
     redoc_url="/redoc",
     openapi_url="/openapi.json",
 )
+
+app.add_middleware(GZipMiddleware, minimum_size=1024)
 
 # CORS — mirrors the legacy handler (Access-Control-Allow-Origin: *). Custom
 # X-* headers set by the predictions endpoint must be listed in

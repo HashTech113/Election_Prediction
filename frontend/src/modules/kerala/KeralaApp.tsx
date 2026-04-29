@@ -7,8 +7,8 @@ import {
   API_BASE,
   EXPECTED_API_VERSION,
   EXPECTED_PREDICTIONS_SHA256,
+  fetchAllLensSummaries,
   fetchHealth,
-  fetchLensSummary,
   fetchPredictionsMeta,
 } from "./services/api";
 import {
@@ -168,12 +168,6 @@ export function KeralaApp() {
   // Per-lens datasets are cached in lensSummaryByName so tab switches are instant.
   useEffect(() => {
     const controller = new AbortController();
-    const LENS_NAMES: LensName[] = [
-      "historical_projection",
-      "long_term_trend",
-      "recent_swing",
-      "final_prediction",
-    ];
 
     async function load() {
       setLoading(true);
@@ -181,37 +175,37 @@ export function KeralaApp() {
       setWarning(null);
 
       try {
-        const health = await fetchHealth(controller.signal);
-        if (health.status !== "ok") {
-          throw new Error(health.error || "Backend health check failed.");
-        }
-        let meta = health.meta;
-        if (!meta) {
-          meta = await fetchPredictionsMeta(controller.signal);
-        }
-        const validation = validatePredictionMeta(meta);
-        if (validation.warning) setWarning(validation.warning);
-        if (validation.error) throw new Error(validation.error);
+        // Kick off health + batch lenses in parallel — neither blocks the other.
+        const healthPromise = fetchHealth(controller.signal);
+        const lensesPromise = fetchAllLensSummaries(controller.signal);
 
-        const lensResults = await Promise.all(
-          LENS_NAMES.map((name) =>
-            fetchLensSummary(name, controller.signal).then(
-              (s) => [name, s] as const,
-              (err) => {
-                console.error(`[KeralaApp] lens '${name}' failed:`, err);
-                return null;
-              },
-            ),
-          ),
-        );
+        // Render the dashboard as soon as lens data lands; meta validation
+        // continues in the background and only surfaces a warning/error if
+        // it actually fails.
+        const next = await lensesPromise;
         if (controller.signal.aborted) return;
-
-        const next: Partial<Record<LensName, LensSummary>> = {};
-        for (const r of lensResults) if (r) next[r[0]] = r[1];
         if (Object.keys(next).length === 0) {
           throw new Error("No lens datasets could be loaded from the backend.");
         }
         setLensSummaryByName(next);
+        setLoading(false);
+
+        // Validate health + meta after first paint. Errors get surfaced as a
+        // banner; the dashboard stays usable in the meantime.
+        const health = await healthPromise;
+        if (controller.signal.aborted) return;
+        if (health.status !== "ok") {
+          setError(health.error || "Backend health check failed.");
+          return;
+        }
+        let meta = health.meta;
+        if (!meta) {
+          meta = await fetchPredictionsMeta(controller.signal);
+          if (controller.signal.aborted) return;
+        }
+        const validation = validatePredictionMeta(meta);
+        if (validation.warning) setWarning(validation.warning);
+        if (validation.error) setError(validation.error);
       } catch (err) {
         if (
           controller.signal.aborted ||

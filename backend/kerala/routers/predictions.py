@@ -20,6 +20,7 @@ from services import (
     SCENARIO_KEYS,
     ScenarioFileMissing,
     ScenarioSeatValidationError,
+    build_all_lens_summaries,
     build_kerala_scenario,
     build_kerala_summary,
     build_lens_summary,
@@ -268,6 +269,31 @@ def kerala_lens(
         return JSONResponse(
             status_code=400, content={"error": str(exc)}, headers=NO_STORE_HEADERS,
         )
+    except FileNotFoundError as exc:
+        return JSONResponse(
+            status_code=404, content={"error": str(exc)}, headers=NO_STORE_HEADERS,
+        )
+    except Exception as exc:
+        return JSONResponse(
+            status_code=500,
+            content={"error": f"Unexpected server error: {exc}"},
+            headers=NO_STORE_HEADERS,
+        )
+    return JSONResponse(content=payload, headers=NO_STORE_HEADERS)
+
+
+@router.get(
+    "/lenses",
+    summary="All-lenses batch endpoint — returns every lens summary in one response",
+    description=(
+        "Single round-trip alternative to four separate /lens calls. The "
+        "dashboard uses this on initial load so all four tabs are ready "
+        "without awaiting four parallel HTTP requests."
+    ),
+)
+def kerala_lenses() -> JSONResponse:
+    try:
+        payload = {"lenses": build_all_lens_summaries()}
     except FileNotFoundError as exc:
         return JSONResponse(
             status_code=404, content={"error": str(exc)}, headers=NO_STORE_HEADERS,

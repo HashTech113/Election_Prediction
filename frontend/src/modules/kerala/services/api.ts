@@ -377,5 +377,50 @@ export async function fetchLensSummary(
   return (await response.json()) as LensSummary;
 }
 
+/**
+ * Fetch all four lens summaries in a single round trip via the batch endpoint.
+ * Falls back to four parallel /lens calls if the batch route is unavailable
+ * (older backend deployment).
+ */
+export async function fetchAllLensSummaries(
+  signal?: AbortSignal,
+): Promise<Partial<Record<LensName, LensSummary>>> {
+  try {
+    const response = await fetchWithApiFallback("/api/predictions/lenses", {
+      signal,
+      cache: "no-store",
+    });
+    if (response.ok) {
+      const body = (await response.json()) as { lenses: Record<string, LensSummary> };
+      return body.lenses as Partial<Record<LensName, LensSummary>>;
+    }
+    if (response.status !== 404) {
+      throw new Error(
+        `Batch lenses endpoint failed (${response.status} ${response.statusText}) from ${API_BASE}`,
+      );
+    }
+  } catch (err) {
+    if (signal?.aborted) throw err;
+    console.warn("[fetchAllLensSummaries] batch endpoint unavailable, falling back to per-lens calls", err);
+  }
+
+  // Fallback: parallel per-lens calls (older backends without /lenses)
+  const names: LensName[] = ["historical_projection", "long_term_trend", "recent_swing", "final_prediction"];
+  const results = await Promise.all(
+    names.map((name) =>
+      fetchLensSummary(name, signal).then(
+        (s) => [name, s] as const,
+        (err) => {
+          console.error(`[fetchAllLensSummaries] '${name}' failed:`, err);
+          return null;
+        },
+      ),
+    ),
+  );
+  const out: Partial<Record<LensName, LensSummary>> = {};
+  for (const r of results) if (r) out[r[0]] = r[1];
+  return out;
+}
+
 export { API_BASE };
 export { EXPECTED_API_VERSION, EXPECTED_PREDICTIONS_SHA256 };

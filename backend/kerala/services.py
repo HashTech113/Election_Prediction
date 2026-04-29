@@ -557,6 +557,43 @@ def _to_pct(raw: str | None) -> float:
     return v / 100.0 if v > 1.0 else v
 
 
+# In-memory cache keyed by (lens, mtime_ns). Invalidated automatically when
+# the underlying CSV is regenerated. First call after a regen still pays the
+# parse cost; subsequent calls return the cached payload immediately. Master
+# spine maps (district, ac_no) are also cached on a separate path.
+_LENS_CACHE: dict[str, tuple[int, dict[str, Any]]] = {}
+_DISTRICT_MAP_CACHE: tuple[int, dict[str, str]] | None = None
+_AC_NO_MAP_CACHE: tuple[int, dict[str, int]] | None = None
+
+
+def _master_mtime_ns() -> int:
+    p = DATA_CSV_DIR / "kerala_constituency_master_2026.csv"
+    try:
+        return p.stat().st_mtime_ns
+    except FileNotFoundError:
+        return 0
+
+
+def _cached_district_map() -> dict[str, str]:
+    global _DISTRICT_MAP_CACHE
+    mtime = _master_mtime_ns()
+    if _DISTRICT_MAP_CACHE is not None and _DISTRICT_MAP_CACHE[0] == mtime:
+        return _DISTRICT_MAP_CACHE[1]
+    m = _load_district_map()
+    _DISTRICT_MAP_CACHE = (mtime, m)
+    return m
+
+
+def _cached_ac_no_map() -> dict[str, int]:
+    global _AC_NO_MAP_CACHE
+    mtime = _master_mtime_ns()
+    if _AC_NO_MAP_CACHE is not None and _AC_NO_MAP_CACHE[0] == mtime:
+        return _AC_NO_MAP_CACHE[1]
+    m = _load_ac_no_map()
+    _AC_NO_MAP_CACHE = (mtime, m)
+    return m
+
+
 def build_lens_summary(lens: str) -> dict[str, Any]:
     """Aggregate seat counts + per-row predictions from a per-lens CSV.
 
@@ -582,6 +619,12 @@ def build_lens_summary(lens: str) -> dict[str, Any]:
     if not path.exists():
         raise FileNotFoundError(f"Lens source file not found: {path}")
 
+    # Cache lookup — invalidated when the CSV's mtime_ns changes.
+    mtime_ns = path.stat().st_mtime_ns
+    cached = _LENS_CACHE.get(lens)
+    if cached is not None and cached[0] == mtime_ns:
+        return cached[1]
+
     with path.open(newline="") as f:
         raw_rows = list(csv.DictReader(f))
 
@@ -590,8 +633,8 @@ def build_lens_summary(lens: str) -> dict[str, Any]:
 
     winner_col = spec["winner_col"]
     score_col = spec.get("score_col")
-    district_map = _load_district_map()
-    ac_no_map = _load_ac_no_map()
+    district_map = _cached_district_map()
+    ac_no_map = _cached_ac_no_map()
 
     seat_counts = {p: 0 for p in PARTIES}
     score_values: list[float] = []
@@ -664,7 +707,7 @@ def build_lens_summary(lens: str) -> dict[str, Any]:
     else:
         average_score = None
 
-    return {
+    payload = {
         "lens": lens,
         "label": spec["label"],
         "total_constituencies": len(raw_rows),
@@ -678,3 +721,12 @@ def build_lens_summary(lens: str) -> dict[str, Any]:
         "rejected_winner_sample": list({rw for rw in rejected_winners[:5]}),
         "rows": out_rows,
     }
+    _LENS_CACHE[lens] = (mtime_ns, payload)
+    return payload
+
+
+def build_all_lens_summaries() -> dict[str, dict[str, Any]]:
+    """Return summaries for every known lens in a single call. Used by the
+    batch endpoint so the frontend can fetch all 4 lenses in one HTTP round
+    trip instead of four parallel ones."""
+    return {name: build_lens_summary(name) for name in LENS_NAMES}
