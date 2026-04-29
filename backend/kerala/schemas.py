@@ -21,6 +21,7 @@ class SeatCounts(BaseModel):
 
 
 class PredictionRow(BaseModel):
+    ac_no: Optional[int] = Field(None, description="Assembly constituency number")
     constituency: str = Field(..., description="Assembly constituency name")
     district: str = Field(..., description="Kerala district")
     predicted: str = Field(..., description="Predicted winning alliance (LDF/UDF/NDA/OTHERS)")

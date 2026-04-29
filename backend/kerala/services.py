@@ -72,7 +72,7 @@ LENS_SOURCES: dict[str, dict] = {
         "file": "kerala_2026_final_prediction_score.csv",
         "winner_col": "final_predicted",
         "score_col": "final_prediction_score",
-        "data_reference": "Live Data",
+        "data_reference": "LIVE DATA",
         "label": "Live Intelligence Score",
     },
 }
@@ -139,16 +139,26 @@ def _to_float(value: Any, default: float = 0.0) -> float:
         return default
 
 
+def _to_int(value: Any, default: int | None = None) -> int | None:
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return default
+
+
 # ---- Base / fallback loaders --------------------------------------------
 
 def _load_rows_from_predictions_file() -> list[dict[str, Any]]:
+    ac_no_map = _load_ac_no_map()
     rows: list[dict[str, Any]] = []
     with PREDICTIONS_FILE.open("r", encoding="utf-8", newline="") as fp:
         reader = csv.DictReader(fp)
         for row in reader:
+            constituency = row.get("constituency", "")
             rows.append(
                 {
-                    "constituency": row.get("constituency", ""),
+                    "ac_no": ac_no_map.get(constituency),
+                    "constituency": constituency,
                     "district": row.get("district", ""),
                     "predicted": row.get("predicted", ""),
                     "confidence": _to_float(row.get("confidence", 0)),
@@ -168,6 +178,7 @@ def _load_rows_from_assembly_fallback() -> list[dict[str, Any]]:
             "Run create_dataset.py and train.py before starting the server."
         )
 
+    ac_no_map = _load_ac_no_map()
     rows: list[dict[str, Any]] = []
     with ASSEMBLY_FALLBACK_FILE.open("r", encoding="utf-8", newline="") as fp:
         reader = csv.DictReader(fp)
@@ -183,9 +194,11 @@ def _load_rows_from_assembly_fallback() -> list[dict[str, Any]]:
                 predicted = max(shares, key=shares.get)
             confidence = shares.get(predicted, 0.0)
 
+            constituency = row.get("constituency", "")
             rows.append(
                 {
-                    "constituency": row.get("constituency", ""),
+                    "ac_no": ac_no_map.get(constituency),
+                    "constituency": constituency,
                     "district": row.get("district", ""),
                     "predicted": predicted,
                     "confidence": confidence,
@@ -302,15 +315,17 @@ def _scenario_share_field(scenario: str, party: str) -> str:
 
 
 def _scenario_to_prediction_row(
-    raw: dict[str, Any], scenario: str
+    raw: dict[str, Any], scenario: str, ac_no_map: dict[str, int]
 ) -> dict[str, Any]:
     """Convert a scenarios-CSV row into the ``PredictionRow`` shape used by
     the existing ``/api/predictions`` consumers."""
     winner = raw[_scenario_winner_field(scenario)]
     shares = {p: _to_float(raw[_scenario_share_field(scenario, p)]) for p in PARTIES}
     confidence = shares.get(winner, 0.0)
+    constituency = raw.get("constituency", "")
     return {
-        "constituency": raw.get("constituency", ""),
+        "ac_no": ac_no_map.get(constituency),
+        "constituency": constituency,
         "district": raw.get("district", ""),
         "predicted": winner,
         "confidence": confidence,
@@ -335,7 +350,11 @@ def load_active_predictions() -> tuple[list[dict[str, Any]], Path, bool, str]:
         return rows, source_file, fb, "base_model"
 
     raw_rows = _load_scenario_rows()
-    rows = [_scenario_to_prediction_row(r, ACTIVE_PREDICTION_SCENARIO) for r in raw_rows]
+    ac_no_map = _load_ac_no_map()
+    rows = [
+        _scenario_to_prediction_row(r, ACTIVE_PREDICTION_SCENARIO, ac_no_map)
+        for r in raw_rows
+    ]
     validate_scenario_seats(ACTIVE_PREDICTION_SCENARIO, rows)
     return rows, SCENARIOS_FILE, False, ACTIVE_PREDICTION_SCENARIO
 
@@ -512,6 +531,21 @@ def _load_district_map() -> dict[str, str]:
         return {row["ac_name"]: row["district"] for row in csv.DictReader(f)}
 
 
+def _load_ac_no_map() -> dict[str, int]:
+    """constituency → AC number from the master spine."""
+    path = DATA_CSV_DIR / "kerala_constituency_master_2026.csv"
+    if not path.exists():
+        return {}
+    with path.open(newline="") as f:
+        out: dict[str, int] = {}
+        for row in csv.DictReader(f):
+            ac_name = row.get("ac_name", "")
+            ac_no = _to_int(row.get("ac_no"))
+            if ac_name and ac_no is not None:
+                out[ac_name] = ac_no
+        return out
+
+
 def _to_pct(raw: str | None) -> float:
     """Parse 'ldf_score'/'_pct' values that may be 0–1 or 0–100."""
     if raw is None or raw == "":
@@ -557,6 +591,7 @@ def build_lens_summary(lens: str) -> dict[str, Any]:
     winner_col = spec["winner_col"]
     score_col = spec.get("score_col")
     district_map = _load_district_map()
+    ac_no_map = _load_ac_no_map()
 
     seat_counts = {p: 0 for p in PARTIES}
     score_values: list[float] = []
@@ -603,6 +638,7 @@ def build_lens_summary(lens: str) -> dict[str, Any]:
 
         out_rows.append(
             {
+                "ac_no": _to_int(row.get("ac_no"), ac_no_map.get(constituency)),
                 "constituency": constituency,
                 "district": district,
                 "predicted": predicted,

@@ -475,6 +475,7 @@ export function KeralaApp() {
                 <table>
                   <thead>
                     <tr>
+                      <th>AC No</th>
                       <th>Constituency</th>
                       <th>District</th>
                       <th>Predicted</th>
@@ -487,6 +488,7 @@ export function KeralaApp() {
                   <tbody>
                     {filteredRows.map((row) => (
                         <tr key={row.constituency}>
+                          <td>{row.ac_no ?? "-"}</td>
                           <td>{row.constituency}</td>
                           <td>{row.district}</td>
                           <td>
@@ -510,4 +512,3 @@ export function KeralaApp() {
 }
 
 export default KeralaApp;
-

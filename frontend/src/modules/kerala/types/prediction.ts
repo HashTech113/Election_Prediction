@@ -1,6 +1,7 @@
 export type Party = "LDF" | "UDF" | "NDA" | "OTHERS";
 
 export type PredictionRow = {
+  ac_no?: number;
   constituency: string;
   district: string;
   predicted: Party;
@@ -189,7 +190,7 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     tab: "live_intelligence_score",
     label: "Live Intelligence Score",
     totalConstituencies: 140,
-    dataReference: "Live Data",
+    dataReference: "LIVE DATA",
     projectedWinner: "UDF",
     averageWinningScore: 0.4353,
     interpretation:
