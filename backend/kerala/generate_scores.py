@@ -39,7 +39,7 @@ PARTIES: tuple[str, ...] = ("LDF", "UDF", "NDA", "OTHERS")
 
 LT_WEIGHTS = {"win_2021": 0.5, "ls2024": 0.3, "win_2016": 0.2}
 RS_WEIGHTS = {"ls2024": 0.6, "lb2025": 0.3, "per_ac_2021": 0.1}
-FINAL_WEIGHTS = {"long_term": 0.30, "recent_swing": 0.40, "live_intel": 0.30}
+FINAL_WEIGHTS = {"long_term": 0.20, "recent_swing": 0.50, "live_intel": 0.30}
 
 CAVEATS = (
     "Per-AC Assembly 2016/2021 vote shares are not available in the repo, so "

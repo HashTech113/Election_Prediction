@@ -65,6 +65,42 @@ body,
   min-height: 100%;
 }
 
+/* Defensive: prevent any single overflowing child (long-form labels, wide
+   tables before their wrapper kicks in, fixed bg-blur decorations) from
+   creating a horizontal scrollbar on mobile. */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* `min-width: 0` lets a flex/grid child shrink below its intrinsic content
+   minimum (default min-width: auto blocks shrinking and is a classic source
+   of "page wider than viewport" bugs on the analysis tabs, where deeply
+   nested grids/flex columns inherit content-min-width from the table or a
+   long heading). Combined with `max-width: 100%`, every wrapper from the
+   page shell down to the tab content panels stays inside the viewport. */
+.app-shell,
+.container,
+main.container,
+.analysis-section,
+.analysis-section > *,
+.middle-stage,
+.middle-stage > *,
+.kpi-grid,
+.kpi-card,
+.analysis-detail-grid,
+.analysis-detail-grid > *,
+.analysis-card,
+.center-card,
+.left-stack,
+.right-stack,
+.table-panel,
+.explorer-section {
+  min-width: 0;
+  max-width: 100%;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
@@ -1111,33 +1147,6 @@ tbody tr:hover {
 }
 
 @media (max-width: 980px) {
-  .pred-tabs,
-  .ep-tabs {
-    display: flex;
-    gap: 0.4rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .pred-tabs::-webkit-scrollbar,
-  .ep-tabs::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    display: none;
-  }
-
-  .pred-tab,
-  .ep-tab {
-    flex: 0 0 clamp(180px, 44vw, 260px);
-  }
-
-  .ep-kpi {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .kpi-grid,
   .kpi-grid-4 {
     grid-template-columns: 1fr;
