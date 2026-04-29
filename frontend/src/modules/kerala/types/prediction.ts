@@ -180,10 +180,10 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     label: "Recent Swing",
     totalConstituencies: 140,
     dataReference: "2021 – 2026",
-    projectedWinner: "UDF",
-    averageWinningScore: 0.454,
+    projectedWinner: "LDF",
+    averageWinningScore: 0.4033,
     interpretation:
-      "Significant swing from LDF to UDF in Lok Sabha 2024. Pre-result intelligence, not official election result.",
+      "Reflects 2021 Assembly actual result baseline (LDF 99, UDF 41). Pre-result intelligence, not official election result.",
   },
   live_intelligence_score: {
     tab: "live_intelligence_score",
