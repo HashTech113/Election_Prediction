@@ -137,15 +137,17 @@ export function KeralaApp() {
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [districtOpen, setDistrictOpen] = useState(false);
+  const [partyOpen, setPartyOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement | null>(null);
   const districtRef = useRef<HTMLDivElement | null>(null);
+  const partyRef = useRef<HTMLDivElement | null>(null);
   const middleStageRef = useRef<HTMLElement | null>(null);
   const hasAnimatedMiddleStageRef = useRef(hasAnimatedMiddleStageInSession);
   const prefersReducedMotion = useReducedMotion();
   const deferredQuery = useDeferredValue(query);
 
   useEffect(() => {
-    if (!searchOpen && !districtOpen) return;
+    if (!searchOpen && !districtOpen && !partyOpen) return;
     const handler = (e: MouseEvent) => {
       const target = e.target as Node;
       if (searchOpen && searchRef.current && !searchRef.current.contains(target)) {
@@ -154,10 +156,13 @@ export function KeralaApp() {
       if (districtOpen && districtRef.current && !districtRef.current.contains(target)) {
         setDistrictOpen(false);
       }
+      if (partyOpen && partyRef.current && !partyRef.current.contains(target)) {
+        setPartyOpen(false);
+      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
-  }, [searchOpen, districtOpen]);
+  }, [searchOpen, districtOpen, partyOpen]);
 
   // ── Initial load: health + meta validation, plus all 4 lens datasets in parallel.
   // Per-lens datasets are cached in lensSummaryByName so tab switches are instant.
@@ -231,13 +236,9 @@ export function KeralaApp() {
   }, [rows]);
 
   const constituencyOptions = useMemo(() => {
-    const q = deferredQuery.trim().toLowerCase();
-    const base = q
-      ? rows.filter((r) => r.constituency.toLowerCase().includes(q))
-      : rows;
-    return [...new Set(base.map((r) => r.constituency))]
+    return [...new Set(rows.map((r) => r.constituency))]
       .sort((a, b) => a.localeCompare(b));
-  }, [rows, deferredQuery]);
+  }, [rows]);
 
   const filteredRows = useMemo(() => {
     const q = deferredQuery.trim().toLowerCase();
@@ -284,8 +285,23 @@ export function KeralaApp() {
   }, [filteredRows]);
 
   const closestSeats = useMemo(() => {
-    const start = Math.max(0, filteredRows.length - 8);
-    return filteredRows.slice(start).reverse();
+    // Sort lowest-confidence first (most competitive). The lens CSVs can give
+    // many ACs the exact same score (Recent Swing pulls LS2024 + LB2025 inputs
+    // that are aggregated at Lok-Sabha-constituency granularity, so all ~7 ACs
+    // sharing a parent LS get identical scores). Without diversification this
+    // panel collapses to a single district at the bottom of the ranking.
+    const ascending = [...filteredRows].sort((a, b) => a.confidence - b.confidence);
+    const perDistrictCap = 2;
+    const perDistrictCount = new Map<string, number>();
+    const picked: typeof ascending = [];
+    for (const row of ascending) {
+      const used = perDistrictCount.get(row.district) ?? 0;
+      if (used >= perDistrictCap) continue;
+      picked.push(row);
+      perDistrictCount.set(row.district, used + 1);
+      if (picked.length >= 8) break;
+    }
+    return picked;
   }, [filteredRows]);
 
   const districtBreakdown = useMemo(() => {
@@ -430,45 +446,76 @@ export function KeralaApp() {
                         )}
                       </div>
 
-                      <div>
+                      <div className="combo-wrap" ref={partyRef}>
                         <label htmlFor="party">Predicted Party</label>
-                        <select
+                        <button
                           id="party"
-                          value={party}
-                          onChange={(e) => setParty(e.target.value as Party | "ALL")}
+                          type="button"
+                          className="combo-toggle"
+                          aria-haspopup="listbox"
+                          aria-expanded={partyOpen}
+                          onClick={() => setPartyOpen((o) => !o)}
                         >
-                          <option value="ALL">All Parties</option>
-                          {displayParties.map((p) => (
-                            <option key={p} value={p}>
-                              {p}
-                            </option>
-                          ))}
-                        </select>
+                          <span>{party === "ALL" ? "All Parties" : party}</span>
+                          <span className="combo-chevron" aria-hidden="true">▾</span>
+                        </button>
+                        {partyOpen && (
+                          <ul className="combo-list" role="listbox">
+                            <li
+                              role="option"
+                              aria-selected={party === "ALL"}
+                              className="combo-item"
+                              onClick={() => {
+                                setParty("ALL");
+                                setPartyOpen(false);
+                              }}
+                            >
+                              All Parties
+                            </li>
+                            {displayParties.map((p) => (
+                              <li
+                                key={p}
+                                role="option"
+                                aria-selected={party === p}
+                                className="combo-item"
+                                onClick={() => {
+                                  setParty(p);
+                                  setPartyOpen(false);
+                                }}
+                              >
+                                {p}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
 
-                      <div className="search-wrap" ref={searchRef}>
+                      <div className="combo-wrap" ref={searchRef}>
                         <label htmlFor="search">Search Constituency</label>
-                        <input
+                        <button
                           id="search"
-                          type="text"
-                          value={query}
-                          placeholder="Type or select..."
-                          autoComplete="off"
-                          role="combobox"
+                          type="button"
+                          className="combo-toggle"
+                          aria-haspopup="listbox"
                           aria-expanded={searchOpen}
-                          aria-controls="constituency-list"
-                          onChange={(e) => {
-                            setQuery(e.target.value);
-                            setSearchOpen(true);
-                          }}
-                          onFocus={() => setSearchOpen(true)}
-                        />
+                          onClick={() => setSearchOpen((o) => !o)}
+                        >
+                          <span>{query || "Select Constituency"}</span>
+                          <span className="combo-chevron" aria-hidden="true">▾</span>
+                        </button>
                         {searchOpen && constituencyOptions.length > 0 && (
-                          <ul
-                            id="constituency-list"
-                            className="combo-list"
-                            role="listbox"
-                          >
+                          <ul className="combo-list" role="listbox">
+                            <li
+                              role="option"
+                              aria-selected={query.length === 0}
+                              className="combo-item"
+                              onClick={() => {
+                                setQuery("");
+                                setSearchOpen(false);
+                              }}
+                            >
+                              All Constituencies
+                            </li>
                             {constituencyOptions.map((name) => (
                               <li
                                 key={name}

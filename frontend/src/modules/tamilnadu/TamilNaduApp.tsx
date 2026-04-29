@@ -91,14 +91,16 @@ export function TamilNaduApp() {
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [districtOpen, setDistrictOpen] = useState(false);
+  const [partyOpen, setPartyOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement | null>(null);
   const districtRef = useRef<HTMLDivElement | null>(null);
+  const partyRef = useRef<HTMLDivElement | null>(null);
   const middleStageRef = useRef<HTMLElement | null>(null);
   const prefersReducedMotion = useReducedMotion();
   const deferredQuery = useDeferredValue(query);
 
   useEffect(() => {
-    if (!searchOpen && !districtOpen) return;
+    if (!searchOpen && !districtOpen && !partyOpen) return;
     const handler = (e: MouseEvent) => {
       const target = e.target as Node;
       if (searchOpen && searchRef.current && !searchRef.current.contains(target)) {
@@ -107,10 +109,13 @@ export function TamilNaduApp() {
       if (districtOpen && districtRef.current && !districtRef.current.contains(target)) {
         setDistrictOpen(false);
       }
+      if (partyOpen && partyRef.current && !partyRef.current.contains(target)) {
+        setPartyOpen(false);
+      }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
-  }, [searchOpen, districtOpen]);
+  }, [searchOpen, districtOpen, partyOpen]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -172,14 +177,10 @@ export function TamilNaduApp() {
   }, [rows]);
 
   const constituencyOptions = useMemo(() => {
-    const q = deferredQuery.trim().toLowerCase();
-    const base = q
-      ? rows.filter((r) => r.constituency.toLowerCase().includes(q))
-      : rows;
-    return [...base]
+    return [...rows]
       .sort((a, b) => a.ac_no - b.ac_no)
       .map((r) => r.constituency);
-  }, [rows, deferredQuery]);
+  }, [rows]);
 
   const filteredRows = useMemo(() => {
     const q = deferredQuery.trim().toLowerCase();
@@ -443,45 +444,76 @@ export function TamilNaduApp() {
                         )}
                       </div>
 
-                      <div>
+                      <div className="combo-wrap" ref={partyRef}>
                         <label htmlFor="party">Predicted Party</label>
-                        <select
+                        <button
                           id="party"
-                          value={party}
-                          onChange={(e) => setParty(e.target.value as Party | "ALL")}
+                          type="button"
+                          className="combo-toggle"
+                          aria-haspopup="listbox"
+                          aria-expanded={partyOpen}
+                          onClick={() => setPartyOpen((o) => !o)}
                         >
-                          <option value="ALL">All Parties</option>
-                          {DISPLAY_PARTIES.map((p) => (
-                            <option key={p} value={p}>
-                              {PARTY_LABELS[p]}
-                            </option>
-                          ))}
-                        </select>
+                          <span>{party === "ALL" ? "All Parties" : PARTY_LABELS[party]}</span>
+                          <span className="combo-chevron" aria-hidden="true">▾</span>
+                        </button>
+                        {partyOpen && (
+                          <ul className="combo-list" role="listbox">
+                            <li
+                              role="option"
+                              aria-selected={party === "ALL"}
+                              className="combo-item"
+                              onClick={() => {
+                                setParty("ALL");
+                                setPartyOpen(false);
+                              }}
+                            >
+                              All Parties
+                            </li>
+                            {DISPLAY_PARTIES.map((p) => (
+                              <li
+                                key={p}
+                                role="option"
+                                aria-selected={party === p}
+                                className="combo-item"
+                                onClick={() => {
+                                  setParty(p);
+                                  setPartyOpen(false);
+                                }}
+                              >
+                                {PARTY_LABELS[p]}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
 
-                      <div className="search-wrap" ref={searchRef}>
+                      <div className="combo-wrap" ref={searchRef}>
                         <label htmlFor="search">Search Constituency</label>
-                        <input
+                        <button
                           id="search"
-                          type="text"
-                          value={query}
-                          placeholder="Type or select..."
-                          autoComplete="off"
-                          role="combobox"
+                          type="button"
+                          className="combo-toggle"
+                          aria-haspopup="listbox"
                           aria-expanded={searchOpen}
-                          aria-controls="constituency-list"
-                          onChange={(e) => {
-                            setQuery(e.target.value);
-                            setSearchOpen(true);
-                          }}
-                          onFocus={() => setSearchOpen(true)}
-                        />
+                          onClick={() => setSearchOpen((o) => !o)}
+                        >
+                          <span>{query || "Select Constituency"}</span>
+                          <span className="combo-chevron" aria-hidden="true">▾</span>
+                        </button>
                         {searchOpen && constituencyOptions.length > 0 && (
-                          <ul
-                            id="constituency-list"
-                            className="combo-list"
-                            role="listbox"
-                          >
+                          <ul className="combo-list" role="listbox">
+                            <li
+                              role="option"
+                              aria-selected={query.length === 0}
+                              className="combo-item"
+                              onClick={() => {
+                                setQuery("");
+                                setSearchOpen(false);
+                              }}
+                            >
+                              All Constituencies
+                            </li>
                             {constituencyOptions.map((name) => (
                               <li
                                 key={name}
@@ -617,4 +649,3 @@ export function TamilNaduApp() {
 }
 
 export default TamilNaduApp;
-

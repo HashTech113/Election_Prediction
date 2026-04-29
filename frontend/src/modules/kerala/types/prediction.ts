@@ -164,9 +164,9 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     totalConstituencies: 140,
     dataReference: "2014 – 2026",
     projectedWinner: "LDF",
-    averageWinningScore: 0.7849,
+    averageWinningScore: 0.782,
     interpretation:
-      "Reflects 2014–2021 trajectory. Pre-result intelligence, not official election result.",
+      "0.5·winner_2021 + 0.3·LS2024 + 0.2·winner_2016. Pre-result intelligence, not official election result.",
   },
   recent_swing: {
     tab: "recent_swing",
@@ -184,7 +184,7 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     totalConstituencies: 140,
     dataReference: "LIVE DATA",
     projectedWinner: "LDF",
-    averageWinningScore: 0.5727,
+    averageWinningScore: 0.5713,
     interpretation:
       "Blended 0.40·long-term + 0.35·recent-swing + 0.25·live-intelligence. Pre-result intelligence, not official election result.",
   },
