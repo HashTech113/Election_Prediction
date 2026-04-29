@@ -153,28 +153,20 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     label: "Historical Projection",
     totalConstituencies: 140,
     dataReference: "2011 – 2026",
-    projectedWinner: "N/A — Data under validation",
-    averageWinningScore: null,
+    projectedWinner: "LDF",
+    averageWinningScore: 0.65,
     interpretation:
-      "2011 Assembly and 2014 Lok Sabha AC-segment data are not present in the " +
-      "uploaded dataset, and 2016 constituency-level labels are currently under " +
-      "validation. This lens cannot be computed until those gaps are filled. " +
-      "Pre-result intelligence, not official election result.",
+      "2016 Assembly per-AC labels reconciled to official ECI totals (LDF 91 / UDF 47 / NDA 1 / OTHERS 1). 2011 per-AC data still pending. Pre-result intelligence, not official election result.",
   },
   long_term_trend: {
     tab: "long_term_trend",
     label: "Long-Term Trend",
     totalConstituencies: 140,
     dataReference: "2014 – 2026",
-    projectedWinner: "N/A — Data under validation",
-    averageWinningScore: null,
+    projectedWinner: "LDF",
+    averageWinningScore: 0.7849,
     interpretation:
-      "Long-Term Trend depends on 2016 constituency-level results, which are " +
-      "currently under validation (state total = 91 LDF / 47 UDF / 1 NDA / 1 OTHERS, " +
-      "but the per-constituency labels in kerala_assembly_2026.csv currently sum to " +
-      "78 LDF / 61 UDF / 1 NDA — a 13-seat gap). This lens is intentionally suppressed " +
-      "until the per-AC labels are reconciled against the ECI 2016 archive. " +
-      "Pre-result intelligence, not official election result.",
+      "Reflects 2014–2021 trajectory. Pre-result intelligence, not official election result.",
   },
   recent_swing: {
     tab: "recent_swing",
@@ -182,7 +174,7 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     totalConstituencies: 140,
     dataReference: "2021 – 2026",
     projectedWinner: "LDF",
-    averageWinningScore: 0.4033,
+    averageWinningScore: 0.4532,
     interpretation:
       "Reflects 2021 Assembly actual result baseline (LDF 99, UDF 41). Pre-result intelligence, not official election result.",
   },
@@ -191,9 +183,9 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     label: "Live Intelligence Score",
     totalConstituencies: 140,
     dataReference: "LIVE DATA",
-    projectedWinner: "UDF",
-    averageWinningScore: 0.4353,
+    projectedWinner: "LDF",
+    averageWinningScore: 0.59,
     interpretation:
-      "Based on projected 2026 vote share data. Pre-result intelligence, not official election result.",
+      "Blended 0.40 long-term + 0.35 recent-swing + 0.25 live-intelligence. Pre-result intelligence, not official election result.",
   },
 };

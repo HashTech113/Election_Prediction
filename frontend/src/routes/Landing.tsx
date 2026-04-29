@@ -1,7 +1,27 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import "../styles/landing.css";
 
 export function Landing() {
+  const [logoVideoDone, setLogoVideoDone] = useState(false);
+  const [logoVideoVisible, setLogoVideoVisible] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    // Try to force-start playback for browsers that ignore autoplay
+    // until JS explicitly calls play().
+    void videoRef.current?.play().catch(() => undefined);
+  }, []);
+
+  useEffect(() => {
+    // Safety fallback: if playback stalls, reveal the static logo.
+    const timerId = window.setTimeout(() => {
+      setLogoVideoVisible(false);
+      setLogoVideoDone(true);
+    }, 8000);
+    return () => window.clearTimeout(timerId);
+  }, []);
+
   return (
     <div className="landing-page">
       <div className="l-bg-blur l-bg-blur-a" />
@@ -11,14 +31,42 @@ export function Landing() {
         <header className="l-hero">
           <div className="l-hero-inner">
             <div className="l-brand-line" aria-label="Election Prediction">
-              <img
-                src="/assets/owlytics.png"
-                alt="Owlytics logo"
-                className="l-q-logo"
-                width={56}
-                height={56}
-                decoding="async"
-              />
+              <span className="l-logo-stage" aria-hidden="true">
+                <img
+                  src="/assets/owlytics.png"
+                  alt="Owlytics logo"
+                  className="l-q-logo l-q-logo-static is-visible"
+                  width={56}
+                  height={56}
+                  decoding="async"
+                />
+                <video
+                  ref={videoRef}
+                  className={`l-q-logo l-q-logo-video ${
+                    !logoVideoDone && logoVideoVisible ? "is-visible" : "is-hidden"
+                  }`}
+                  width={56}
+                  height={56}
+                  autoPlay
+                  muted
+                  playsInline
+                  preload="auto"
+                  onCanPlay={() => {
+                    void videoRef.current?.play().catch(() => undefined);
+                  }}
+                  onPlaying={() => setLogoVideoVisible(true)}
+                  onEnded={() => {
+                    setLogoVideoVisible(false);
+                    setLogoVideoDone(true);
+                  }}
+                  onError={() => {
+                    setLogoVideoVisible(false);
+                    setLogoVideoDone(true);
+                  }}
+                >
+                  <source src="/assets/logo_video.mp4" type="video/mp4" />
+                </video>
+              </span>
               <h1 className="l-brand-title">Election Prediction</h1>
             </div>
             <p className="l-hero-tagline">
