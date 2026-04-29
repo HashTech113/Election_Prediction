@@ -927,6 +927,20 @@ select:focus {
   padding: 0.26rem 0.62rem;
 }
 
+.explorer-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.explorer-subtitle {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
 .table-wrap {
   position: relative;
   z-index: 1;
