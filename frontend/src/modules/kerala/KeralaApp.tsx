@@ -462,8 +462,12 @@ export function KeralaApp() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.35, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
               >
-                <h2 className="explorer-title">Constituency Explorer</h2>
-                <span className="table-meta">High Score Seats: {highMarginSeats}</span>
+                <div className="explorer-title-block">
+                  <h2 className="explorer-title">
+                    Constituency-level {activeSummary?.label ?? "Historical Projection"}
+                  </h2>
+                  <p className="explorer-subtitle">{rows.length} constituencies analysed</p>
+                </div>
               </motion.div>
               <motion.div
                 className="table-wrap"

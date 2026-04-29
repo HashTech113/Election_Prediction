@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 import { LensName, LensSummary } from "../types/prediction";
 import { asPercent } from "../utils/format";
 
@@ -16,6 +16,9 @@ interface AnalysisHeroProps {
 }
 
 const PLACEHOLDER_NUM = "—";
+const HEADING_STAGGER_MS = 70;
+const VALUE_STAGGER_MS = 70;
+const VALUE_HEAD_OFFSET_MS = 120;
 
 export function AnalysisHero({ activeLens, onLensChange, summaries }: AnalysisHeroProps) {
   const summary = summaries[activeLens];
@@ -81,13 +84,41 @@ export function AnalysisHero({ activeLens, onLensChange, summaries }: AnalysisHe
       </nav>
 
       <section className="ep-kpi">
-        {kpi.map((item) => (
+        {kpi.map((item, i) => (
           <article key={item.label} className="ep-kpi-item">
-            <h3>{item.label}</h3>
-            <strong>{item.value}</strong>
+            <h3>
+              <span className="kpi-roll-box">
+                <span
+                  className="kpi-roll-text"
+                  key={`h-${i}-${item.label}`}
+                  style={{ ["--kpi-roll-delay" as string]: `${i * HEADING_STAGGER_MS}ms` }}
+                >
+                  {item.label}
+                </span>
+              </span>
+            </h3>
+            <strong aria-live="polite">
+              <span className="kpi-roll-box">
+                <span
+                  className="kpi-roll-text"
+                  key={`v-${i}-${activeLens}-${stringifyValue(item.value)}`}
+                  style={{
+                    ["--kpi-roll-delay" as string]:
+                      `${VALUE_HEAD_OFFSET_MS + i * VALUE_STAGGER_MS}ms`,
+                  }}
+                >
+                  {item.value}
+                </span>
+              </span>
+            </strong>
           </article>
         ))}
       </section>
     </section>
   );
+}
+
+function stringifyValue(v: ReactNode): string {
+  if (typeof v === "string" || typeof v === "number") return String(v);
+  return "";
 }
