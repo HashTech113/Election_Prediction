@@ -173,10 +173,10 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     label: "Recent Swing",
     totalConstituencies: 140,
     dataReference: "2021 – 2026",
-    projectedWinner: "LDF",
+    projectedWinner: "UDF",
     averageWinningScore: 0.4532,
     interpretation:
-      "Reflects 2021 Assembly actual result baseline (LDF 99, UDF 41). Pre-result intelligence, not official election result.",
+      "0.7·LS2024 + 0.3·LB2025 swing model. Reflects the post-2021 swing onto 2026 ACs. Pre-result intelligence, not official election result.",
   },
   live_intelligence_score: {
     tab: "live_intelligence_score",
@@ -184,8 +184,8 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     totalConstituencies: 140,
     dataReference: "LIVE DATA",
     projectedWinner: "LDF",
-    averageWinningScore: 0.59,
+    averageWinningScore: 0.5727,
     interpretation:
-      "Blended 0.40 long-term + 0.35 recent-swing + 0.25 live-intelligence. Pre-result intelligence, not official election result.",
+      "Blended 0.40·long-term + 0.35·recent-swing + 0.25·live-intelligence. Pre-result intelligence, not official election result.",
   },
 };

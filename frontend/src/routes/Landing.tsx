@@ -70,9 +70,10 @@ export function Landing() {
               <h1 className="l-brand-title">Election Prediction</h1>
             </div>
             <p className="l-hero-tagline">
-              Choose a state to explore <span className="l-accent">AI-powered</span>{" "}
-              constituency-level predictions for the upcoming{" "}
-              <span className="l-accent">2026 Assembly Elections</span>.
+              Choose a state to explore <span className="l-accent">AI-led</span>{" "}
+              constituency-level projections for the{" "}
+              <span className="l-accent">2026 Assembly Elections</span>, powered by real-time
+              insights and historical data intelligence.
             </p>
           </div>
         </header>
