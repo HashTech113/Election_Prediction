@@ -63,6 +63,9 @@ function buildHeaderSummary(meta: AnalysisMeta, rows: AnalysisPredictionRow[]): 
     // Recent Swing measures movement since the last assembly election (2021),
     // even though the freshest LS reference is 2024. Anchor the label to 2021.
     dataReference = `2021 - ${meta.cm_election_year}`;
+  } else if (meta.analysis_type === "long_term_trend") {
+    // Long-term trend in TN is anchored to assembly baselines (2016 onward).
+    dataReference = `2016 - ${meta.cm_election_year}`;
   } else {
     const refYears = meta.lok_sabha_reference_years;
     const earliest = refYears.length > 0 ? Math.min(...refYears) : meta.cm_election_year;

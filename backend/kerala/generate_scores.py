@@ -306,7 +306,7 @@ def _build_projection_summary(
     lt_row = [
         "Long-Term Trend [2016-2021]",
         n_ac,
-        "2014 – 2026",
+        "2016 – 2026",
         lt_winner or "N/A",
         round(lt_share, 2) if lt_winner else "",
         (

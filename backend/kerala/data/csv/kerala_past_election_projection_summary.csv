@@ -1,5 +1,5 @@
 projection_type,total_constituencies,data_reference,projected_winner,average_winning_score,interpretation,source_files
 Historical Projection [2011-2014],140,2011 – 2026,LDF,65.0,2016 per-AC labels reconciled to official ECI totals (LDF 91 / UDF 47 / NDA 1 / OTHERS 1). 2011 AC-level data unavailable.,"kerala_assembly_election_2016.csv, kerala_actual_historical_trend_swing_constituencies.csv"
-Long-Term Trend [2016-2021],140,2014 – 2026,LDF,78.2,0.5·winner_2021 + 0.3·LS2024 + 0.2·winner_2016.,"kerala_assembly_election_2016.csv, kerala_assembly_election_2021.csv"
+Long-Term Trend [2016-2021],140,2016 – 2026,LDF,78.2,0.5·winner_2021 + 0.3·LS2024 + 0.2·winner_2016.,"kerala_assembly_election_2016.csv, kerala_assembly_election_2021.csv"
 Recent Swing [2021-2024],140,2021 – 2026,UDF,45.73,0.6·LS2024 + 0.3·LB2025 + 0.1·per_AC_2021_factor (vote_share + margin).,"kerala_lok_sabha_election_2024.csv, kerala_local_body_2025.csv, kerala_assembly_2026.csv"
 Live Intelligence Score [LIVE DATA],140,Live Data,LDF,50.84,Blended 0.20·long-term + 0.50·recent-swing + 0.30·live-intelligence.,kerala_2026_final_prediction_score.csv

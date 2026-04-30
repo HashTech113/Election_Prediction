@@ -108,35 +108,7 @@ body,
   object-fit: contain;
   animation: l-logoZoom 3.2s ease-in-out 1 both;
   will-change: transform;
-}
-
-.l-q-logo-video {
-  position: absolute;
-  inset: 0;
-  display: block;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 420ms ease;
-}
-
-.l-q-logo-video.is-visible {
   opacity: 1;
-}
-
-.l-q-logo-static {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 420ms ease;
-}
-
-.l-q-logo-static.is-visible {
-  opacity: 1;
-}
-
-.l-q-logo-video.is-hidden {
-  opacity: 0;
-  pointer-events: none;
 }
 
 @keyframes l-logoZoom {

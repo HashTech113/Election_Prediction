@@ -58,7 +58,7 @@ LENS_SOURCES: dict[str, dict] = {
         "file": "kerala_2026_long_term_trend_sheet.csv",
         "winner_col": "analysis_predicted",
         "score_col": "long_term_trend_score",
-        "data_reference": "2014 – 2026",
+        "data_reference": "2016 – 2026",
         "label": "Long-Term Trend",
     },
     "recent_swing": {

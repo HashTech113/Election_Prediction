@@ -162,7 +162,7 @@ export const PROJECTION_SUMMARIES: Record<ProjectionTab, ProjectionSummary> = {
     tab: "long_term_trend",
     label: "Long-Term Trend",
     totalConstituencies: 140,
-    dataReference: "2014 – 2026",
+    dataReference: "2016 – 2026",
     projectedWinner: "LDF",
     averageWinningScore: 0.782,
     interpretation:
