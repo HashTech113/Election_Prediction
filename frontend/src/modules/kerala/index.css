@@ -295,34 +295,6 @@ body {
   box-shadow: var(--shadow-active);
 }
 
-@media (max-width: 720px) {
-  .pred-tabs,
-  .ep-tabs {
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 8px 10px;
-    gap: 6px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .pred-tabs::-webkit-scrollbar,
-  .ep-tabs::-webkit-scrollbar {
-    display: none;
-  }
-
-  .pred-tab,
-  .ep-tab {
-    flex: 0 0 auto;
-    padding: 12px 22px;
-    font-size: 12px;
-    letter-spacing: 1.2px;
-    scroll-snap-align: start;
-  }
-}
-
 .ep-kpi {
   display: grid;
   gap: 0;
@@ -349,10 +321,20 @@ body {
   border-right: 1px solid rgba(255, 255, 255, 0.4);
   padding: 1rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .ep-kpi-item:last-child {
   border-right: 0;
+}
+
+.ep-kpi-item::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -70% -20%;
+  height: 105px;
+  background: radial-gradient(circle, rgba(148, 163, 184, 0.14), transparent 60%);
 }
 
 .ep-kpi-item h3 {
@@ -1289,6 +1271,15 @@ tbody tr:hover {
   .kpi-grid,
   .ep-kpi {
     grid-template-columns: 1fr;
+  }
+
+  .ep-kpi-item {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .ep-kpi-item:last-child {
+    border-bottom: 0;
   }
 
   .panel {

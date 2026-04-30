@@ -276,17 +276,16 @@ export function TamilNaduApp() {
     });
   }, [loading, error, rows.length]);
 
-  // Run the middle-stage entrance animation only the first time the Default
-  // tab is shown after data loads. Re-firing it on every analysisType change
-  // made switching back to Default feel like a 1.5s reload.
-  const hasAnimatedDefaultRef = useRef(false);
+  // Replay the middle-stage entrance animation each time the Default tab
+  // becomes active and data is ready, so the bars grow in on every visit.
   useEffect(() => {
     if (analysisType !== "default") return;
-    if (hasAnimatedDefaultRef.current) return;
     const element = middleStageRef.current;
     if (!element || loading || error) return;
+    element.classList.remove("animate-cards");
+    // Force reflow so the next class addition restarts the CSS animation.
+    void element.offsetWidth;
     element.classList.add("animate-cards");
-    hasAnimatedDefaultRef.current = true;
   }, [loading, error, analysisType]);
 
   const projectedWinnerLabel =

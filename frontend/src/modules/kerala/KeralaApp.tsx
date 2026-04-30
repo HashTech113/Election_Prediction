@@ -28,7 +28,6 @@ const ALLOWED_SOURCE_FILES = new Set([
 // (range 0.25-1.0 for 4 classes). 0.60 cleanly separates confident calls
 // from competitive ones; the 0.75 margin used previously was unreachable.
 const HIGH_MARGIN_THRESHOLD = 0.6;
-let hasAnimatedMiddleStageInSession = false;
 
 function getSeatCounts(rows: PredictionRow[]) {
   const counts: Record<Party, number> = {
@@ -142,7 +141,6 @@ export function KeralaApp() {
   const districtRef = useRef<HTMLDivElement | null>(null);
   const partyRef = useRef<HTMLDivElement | null>(null);
   const middleStageRef = useRef<HTMLElement | null>(null);
-  const hasAnimatedMiddleStageRef = useRef(hasAnimatedMiddleStageInSession);
   const prefersReducedMotion = useReducedMotion();
   const deferredQuery = useDeferredValue(query);
 
@@ -313,38 +311,17 @@ export function KeralaApp() {
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [filteredRows]);
 
+  // Replay the middle-stage entrance animation whenever the active lens
+  // changes (and on initial reveal once data is ready), so each tab switch
+  // shows the bars growing in.
   useEffect(() => {
     const element = middleStageRef.current;
-    if (!element || loading || error || hasAnimatedMiddleStageRef.current) return;
-
-    const triggerStageAnimationOnce = () => {
-      if (hasAnimatedMiddleStageRef.current) return;
-      hasAnimatedMiddleStageRef.current = true;
-      hasAnimatedMiddleStageInSession = true;
-      element.classList.add("animate-cards");
-    };
-
-    if (typeof IntersectionObserver === "undefined") {
-      triggerStageAnimationOnce();
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries, observerInstance) => {
-      const shouldAnimate = entries.some(
-        (entry) => entry.isIntersecting && entry.intersectionRatio >= 0.12,
-      );
-      if (!shouldAnimate) return;
-      triggerStageAnimationOnce();
-      observerInstance.disconnect();
-    }, { threshold: [0, 0.12] });
-
-    observer.observe(element);
-    const fallbackTimerId = window.setTimeout(triggerStageAnimationOnce, 300);
-    return () => {
-      window.clearTimeout(fallbackTimerId);
-      observer.disconnect();
-    };
-  }, [loading, error]);
+    if (!element || loading || error) return;
+    element.classList.remove("animate-cards");
+    // Force reflow so the next class addition restarts the CSS animation.
+    void element.offsetWidth;
+    element.classList.add("animate-cards");
+  }, [loading, error, activeLens]);
 
   return (
     <div className="kerala-app app-shell">

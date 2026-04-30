@@ -671,18 +671,17 @@ export function AnalysisPanel({ analysisType }: AnalysisPanelProps) {
     setFilter({ district: "ALL", party: "ALL", query: "" });
   }, [analysisType]);
 
-  // Run the middle-stage entrance animation only on the very first reveal
-  // of this panel. Re-firing it on every tab switch makes switches feel like
-  // a 1.5s reload. Once it has played, leave the class in place so re-renders
-  // don't restart it.
-  const hasAnimatedRef = useRef(false);
+  // Replay the middle-stage entrance animation whenever the active analysis
+  // tab finishes loading new data, so each tab switch shows the bars growing in.
   useEffect(() => {
-    if (hasAnimatedRef.current) return;
     const element = middleStageRef.current;
     if (!element || loading || error || !data) return;
+    if (data.meta.analysis_type !== analysisType) return;
+    element.classList.remove("animate-cards");
+    // Force reflow so the next class addition restarts the CSS animation.
+    void element.offsetWidth;
     element.classList.add("animate-cards");
-    hasAnimatedRef.current = true;
-  }, [loading, error, data]);
+  }, [loading, error, data, analysisType]);
 
   useEffect(() => {
     const cached = getCachedAnalysisPredictions(analysisType);
