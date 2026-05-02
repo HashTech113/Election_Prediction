@@ -250,7 +250,15 @@ export function KeralaApp() {
       return districtOk && partyOk && queryOk;
     });
 
-    next.sort((a, b) => b.confidence - a.confidence);
+    // Sort by AC number 1→140 so every lens tab renders the same canonical
+    // ordering. Rows missing ac_no (defensive — master spine should cover all
+    // 140) sink to the end and fall back to alphabetical constituency order.
+    next.sort((a, b) => {
+      const ax = a.ac_no ?? Number.POSITIVE_INFINITY;
+      const bx = b.ac_no ?? Number.POSITIVE_INFINITY;
+      if (ax !== bx) return ax - bx;
+      return a.constituency.localeCompare(b.constituency);
+    });
 
     return next;
   }, [rows, district, party, deferredQuery]);
