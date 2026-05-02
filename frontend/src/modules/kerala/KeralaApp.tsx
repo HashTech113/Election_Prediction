@@ -3,6 +3,7 @@ import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { AnalysisHero } from "./components/AnalysisHero";
 import { PartyBadge } from "./components/PartyBadge";
+import { useSeo } from "../../shared/lib/useSeo";
 import {
   API_BASE,
   EXPECTED_API_VERSION,
@@ -116,6 +117,13 @@ function validatePredictionMeta(meta: PredictionsMeta): MetaValidationResult {
 }
 
 export function KeralaApp() {
+  useSeo({
+    title: "Owlytics Election Prediction 2026",
+    description:
+      "AI-led, constituency-level forecast for the Kerala 2026 Assembly Election. Seat projections and vote shares for LDF, UDF, and NDA across 140 constituencies and 14 districts.",
+    canonicalPath: "/kerala",
+  });
+
   // ── Active analysis lens (drives KPI tile + constituency table + bars) ──
   // Each tab maps to a different pre-built CSV on the backend, so the
   // entire dashboard swaps when the user changes tabs (mirrors TN behaviour).

@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { PartyBadge } from "./components/PartyBadge";
 import { AnimatedKpiGrid } from "./components/AnimatedKpiGrid";
 import { AnalysisPanel } from "./components/AnalysisPanel";
+import { useSeo } from "../../shared/lib/useSeo";
 import {
   API_BASE,
   EXPECTED_API_VERSION,
@@ -81,6 +82,13 @@ function validatePredictionMeta(meta: PredictionsMeta): string | null {
 }
 
 export function TamilNaduApp() {
+  useSeo({
+    title: "Owlytics Election Prediction 2026",
+    description:
+      "AI-led, constituency-level forecast for the Tamil Nadu 2026 Assembly Election. Seat projections and vote shares for DMK Alliance, AIADMK+NDA, TVK, and NTK across 234 constituencies and 38 districts.",
+    canonicalPath: "/tamilnadu",
+  });
+
   const [rows, setRows] = useState<PredictionRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

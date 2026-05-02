@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
+import { useSeo } from "../shared/lib/useSeo";
 import "../styles/landing.css";
 
 export function Landing() {
+  useSeo({
+    title: "Owlytics Election Prediction 2026",
+    description:
+      "AI-led, constituency-level projections for the 2026 Kerala and Tamil Nadu Assembly Elections. Seat counts, vote shares, and historical voter swings updated with real-time signals.",
+    canonicalPath: "/",
+  });
+
   return (
     <div className="landing-page">
       <div className="l-bg-blur l-bg-blur-a" />
