@@ -91,6 +91,34 @@ const EXPECTED_PREDICTIONS_SHA256 =
 const EXPECTED_API_VERSION =
   import.meta.env.VITE_EXPECTED_API_VERSION?.trim() || "";
 
+// ---- Static data mode -----------------------------------------------------
+// When enabled, the app reads pre-baked JSON snapshots from `public/data/tamilnadu`
+// instead of calling a live backend, so the whole site can be hosted as a pure
+// static deployment (Vercel) with no backend / Railway / CORS dependency.
+// Regenerate the snapshots with `npm run snapshot:data` (scripts/snapshot-data.sh).
+// Default: ON in production builds, OFF in dev so `npm run dev` still talks to
+// the local backend. Force either way with VITE_STATIC_DATA="1" / "0".
+const STATIC_DATA_FLAG = String(import.meta.env.VITE_STATIC_DATA ?? "").trim();
+const STATIC_DATA_MODE =
+  STATIC_DATA_FLAG === "1" || (import.meta.env.PROD && STATIC_DATA_FLAG !== "0");
+const STATIC_DATA_BASE = `${import.meta.env.BASE_URL}data/tamilnadu`;
+
+// Map a live API request (path + query) onto its baked static snapshot file.
+function resolveStaticUrl(path: string): string {
+  const [rawPath, rawQuery = ""] = path.split("?");
+  const query = new URLSearchParams(rawQuery);
+  let file = "predictions.json";
+  if (rawPath.startsWith("/api/health")) {
+    file = "health.json";
+  } else if (rawPath.startsWith("/api/predictions/meta")) {
+    file = "predictions-meta.json";
+  } else if (rawPath.startsWith("/api/predictions")) {
+    const analysisType = query.get("analysis_type");
+    file = analysisType ? `analysis-${analysisType}.json` : "predictions.json";
+  }
+  return `${STATIC_DATA_BASE}/${file}`;
+}
+
 function withCacheBuster(path: string): string {
   const separator = path.includes("?") ? "&" : "?";
   return `${path}${separator}_ts=${Date.now()}`;
@@ -121,6 +149,12 @@ if (import.meta.env.DEV) {
  * Logs a warning if using default localhost
  */
 function validateApiConfig(): void {
+  if (STATIC_DATA_MODE) {
+    if (import.meta.env.DEV) {
+      console.info("[API Config] Static data mode ON — reading", STATIC_DATA_BASE);
+    }
+    return;
+  }
   if (API_BASE === LOCAL_API_BASE && import.meta.env.PROD) {
     console.warn(
       "[API Config] WARNING: Using localhost API_BASE in production. Set VITE_API_BASE_URL to your Railway backend URL."
@@ -189,6 +223,9 @@ async function fetchWithApiFallback(
   path: string,
   init: RequestInit
 ): Promise<Response> {
+  if (STATIC_DATA_MODE) {
+    return fetch(resolveStaticUrl(path), withTimeout(init));
+  }
   const primaryUrl = withApiBase(path, API_BASE);
   const fallbackUrl = API_BASE_FALLBACK ? withApiBase(path, API_BASE_FALLBACK) : "";
 
